@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Construction</title>
+        <!-- Favicon -->
+    <link rel="icon" href="/assets/fav2.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/assets/fav2.png" type="image/x-icon" />
+    <!-- For modern browsers -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/fav2.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/fav2.png" />
+    <link rel="html" href="const.html" />
+    <!-- For Apple devices -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/fav2.png" />
+    <!-- For Android/Chrome -->
+    <link rel="manifest" href="site.webmanifest" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            margin-bottom: 100px;
+        }
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            opacity: 2; /* Slightly more visible video */
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85); /* Darker black overlay */
+            z-index: -1;
+        }
+        .text-glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px rgba(89, 81, 81, 0.5);
+            }
+            to {
+                text-shadow: 0 0 15px rgba(100, 93, 93, 0.9);
+            }
+        }
+        .back-btn {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px); /* Frosted glass effect */
+        }
+        .back-btn:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="h-screen flex flex-col items-center justify-center text-white">
+    <!-- Video Background with Dark Overlay -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="/assets/d.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+    </div>
+    <div class="overlay"></div>
+
+    <!-- Content -->
+    <div class="text-center px-4">
+        <h1 class="text-4xl md:text-6xl font-bold uppercase tracking-widest mb-8 text-glow">
+            UNDER CONSTRUCTION
+        </h1>
+        <button onclick="goBackOrRedirect()" 
+        class="back-btn border border-white/30 py-3 px-8 rounded-full text-lg md:text-xl bg-white/5">
+    Back to Website
+</button>
+
+    </div>
+
+    <script>
+        // Fallback if video doesn't load
+        document.querySelector('video').addEventListener('error', function() {
+            document.querySelector('.overlay').style.backgroundColor = '#000';
+            document.querySelector('.video-background').innerHTML = '';
+        });
+    </script>
+    <script>
+    function goBackOrRedirect() {
+        if (document.referrer && document.referrer !== window.location.href) {
+            window.history.back();
+        } else {
+            window.location.href = "https://yourwebsite.com"; // Replace with your real homepage URL
+        }
+    }
+
+    // Fallback if video doesn't load
+    document.querySelector('video').addEventListener('error', function() {
+        document.querySelector('.overlay').style.backgroundColor = '#000';
+        document.querySelector('.video-background').innerHTML = '';
+    });
+</script>
+
+</body>
+</html>

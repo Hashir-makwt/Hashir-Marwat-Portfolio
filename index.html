@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hashir Marwat - Portfolio</title>
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/fav2.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/assets/fav2.png" type="image/x-icon" />
+    <!-- For modern browsers -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/fav2.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/fav2.png" />
+    <link rel="html" href="const.html" />
+    <!-- For Apple devices -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/fav2.png" />
+    <!-- For Android/Chrome -->
+    <link rel="manifest" href="site.webmanifest" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&family=Audiowide&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="const.html" />
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      as="style"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&family=Audiowide&display=swap"
+      as="style"
+      crossorigin
+    />
+    <style>
+      /* CSS Variables */
+      :root {
+        --primary: #00f7ff;
+        --primary-rgb: 0, 247, 255;
+        --bg-dark: #000;
+        --text-light: #f0f0f0;
+        --text-gray: #94a3b8;
+        --card-bg: rgba(30, 30, 40, 0.7);
+        --card-border: rgba(80, 80, 100, 0.3);
+      }
+
+      /* Base Styles */
+      /* html {
+      scroll-behavior: smooth;
+    }
+    */
+      /* Optimize rendering */
+      html,
+      body {
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg-dark);
+        color: var(--text-light);
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Performance Optimizations */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      /* Font Loading */
+      @font-face {
+        font-family: "Inter";
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Orbitron";
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Audiowide";
+        font-display: swap;
+      }
+
+      /* Layout Sections */
+      #intro,
+      #work,
+      #about,
+      #contact {
+        position: relative;
+        overflow: hidden;
+        min-height: 100vh;
+        padding: 120px 0;
+      }
+
+      /* Background Elements */
+      .video-background,
+      .space-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .video-background {
+        object-fit: cover;
+        opacity: 0.5;
+      }
+
+      /* Content Layer */
+      .content-overlay {
+        position: relative;
+        z-index: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* ===== Sidebar Styles ===== */
+      .sidebar {
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(10px);
+        color: white;
+        height: 100vh;
+        position: fixed;
+        width: 100%;
+        padding: 40px;
+        transition: transform 0.3s ease;
+        z-index: 20;
+        box-shadow: 0 0 30px rgba(var(--primary-rgb), 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        left: 0;
+        margin: 0;
+        overflow-y: auto;
+        transform: translateX(-100%);
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .content {
+        margin-left: 0;
+        transition: margin 0.3s ease;
+      }
+
+      .sidebar-header {
+        margin-bottom: 40px;
+        text-align: center;
+      }
+
+      .sidebar-nav {
+        margin-bottom: 60px;
+        width: 100%;
+      }
+
+      .sidebar-nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .sidebar-footer {
+        margin-top: auto;
+        text-align: center;
+        width: 100%;
+      }
+
+      /* Navigation Links - Ultra Smooth */
+      .nav-link {
+        display: block;
+        padding: 12px 0;
+        color: var(--text-gray);
+        text-decoration: none;
+        position: relative;
+        text-align: center;
+        will-change: transform, color;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+          padding-right 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        font-size: 1.2rem;
+      }
+
+      .nav-link:hover {
+        color: var(--primary);
+        padding-right: 15px;
+      }
+
+      .nav-link:hover::after {
+        content: "<";
+        position: absolute;
+        right: 0;
+        color: var(--primary);
+        animation: navLinkFadeIn 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      @keyframes navLinkFadeIn {
+        from {
+          opacity: 0;
+          transform: translateX(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* ===== Project Cards ===== */
+      .project-card {
+        background-color: var(--card-bg);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        will-change: transform;
+        border: 1px solid var(--card-border);
+        backdrop-filter: blur(10px);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .project-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px) !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+          0 0 30px rgba(var(--primary-rgb), 0.3);
+        border: 1px solid rgba(var(--primary-rgb), 0.5);
+      }
+
+      .project-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+      }
+
+      .project-link {
+        display: inline-flex;
+        align-items: center;
+        color: var(--primary);
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .project-link i {
+        margin-right: 5px;
+      }
+
+      /* Mobile Menu Button */
+      .mobile-menu-btn {
+        display: none;
+        position: fixed;
+        top: 25px;
+        right: 25px;
+        background: transparent;
+        border: none;
+        color: var(--primary);
+        font-size: 1.5rem;
+        z-index: 30;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-menu-btn:hover {
+        background: rgba(var(--primary-rgb), 0.1);
+      }
+
+      .mobile-menu-btn.active {
+        color: white;
+      }
+
+      /* Mobile Menu Links - Ultra Smooth */
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 80px;
+        right: 25px;
+        background: rgba(18, 18, 24, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 8px;
+        padding: 20px;
+        z-index: 25;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(var(--primary-rgb), 0.2);
+      }
+
+      .mobile-menu.active {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .mobile-menu a {
+        color: var(--text-gray);
+        padding: 10px;
+        text-decoration: none;
+        will-change: color;
+        transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .mobile-menu a:hover {
+        color: var(--primary);
+      }
+
+      /* Hide mobile menu button on desktop */
+      @media (min-width: 1025px) {
+        .mobile-menu-btn {
+          display: none !important;
+        }
+
+        .sidebar {
+          width: 320px;
+          justify-content: space-between;
+          align-items: flex-start;
+          transform: translateX(0);
+        }
+
+        .sidebar-nav ul {
+          align-items: flex-end;
+        }
+
+        .sidebar-footer {
+          text-align: left;
+        }
+
+        .content {
+          margin-left: 320px;
+        }
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        background: linear-gradient(45deg, #0f7ea7, var(--primary));
+        color: white;
+        padding: 14px 28px;
+        border-radius: 10px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+        border: none;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 25px rgba(0, 212, 255, 0.4);
+      }
+
+      .btn:active {
+        transform: translateY(0);
+      }
+
+      .btn-loading {
+        pointer-events: none;
+        opacity: 0.7;
+      }
+
+      .btn-loading::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 16px;
+        height: 16px;
+        margin: -8px 0 0 -8px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-top-color: white;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+
+      /* Stars Background */
+      .stars {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        overflow: hidden;
+      }
+
+      .stars span {
+        position: absolute;
+        background: #fff;
+        border-radius: 50%;
+        animation: twinkle linear infinite;
+        backface-visibility: hidden;
+      }
+
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0.2;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Nebula Background */
+      .nebula {
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        top: -50%;
+        left: -50%;
+        background: radial-gradient(
+          circle at center,
+          rgba(138, 43, 226, 0.1) 0%,
+          rgba(0, 0, 139, 0) 60%
+        );
+        animation: rotate 120s linear infinite;
+        z-index: -1;
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Scroll Animations */
+      .section-content {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .section-content.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Form Styles */
+      .form-input {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.9);
+        color: #000;
+        transition: all 0.3s ease;
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.2);
+      }
+
+      .form-error {
+        color: #ff6b6b;
+        font-size: 14px;
+        margin-top: 5px;
+        display: none;
+      }
+
+      .form-input.error {
+        border-color: #ff6b6b;
+      }
+
+      .honeypot {
+        position: absolute;
+        left: -9999px;
+      }
+
+      /* Success Message */
+      .form-success {
+        display: none;
+        padding: 20px;
+        background: rgba(var(--primary-rgb), 0.1);
+        border: 1px solid var(--primary);
+        border-radius: 8px;
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      /* Back to Top Button */
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: rgba(var(--primary-rgb), 0.2);
+        color: var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 10;
+        border: none;
+        outline: none;
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .back-to-top:hover {
+        background: rgba(var(--primary-rgb), 0.3);
+      }
+
+      /* Loading States */
+      .video-loading {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+      }
+
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top-color: var(--primary);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      /* Skeleton Loading */
+      .skeleton {
+        background: linear-gradient(
+          90deg,
+          rgba(30, 30, 40, 0.5) 25%,
+          rgba(50, 50, 60, 0.5) 50%,
+          rgba(30, 30, 40, 0.5) 75%
+        );
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite;
+        border-radius: 8px;
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .sidebar {
+          transform: translateX(-100%);
+        }
+        .sidebar.active {
+          transform: translateX(0);
+        }
+        .content {
+          margin-left: 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .mobile-menu-btn {
+          display: flex;
+        }
+
+        .content {
+          margin-left: 0;
+        }
+
+        /* Adjust section padding for mobile */
+        #intro,
+        #work,
+        #about,
+        #contact {
+          padding: 80px 0;
+        }
+
+        /* Project cards stack on mobile */
+        .project-card > div {
+          flex-direction: column;
+        }
+
+        .project-card > div > div {
+          width: 100% !important;
+        }
+      }
+
+      /* Reduced Motion */
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .project-card,
+        .service-box,
+        .btn,
+        .section-content,
+        .stars span,
+        .nebula,
+        .nav-link {
+          transition: none !important;
+          animation: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mobile Menu Button -->
+    <button
+      class="mobile-menu-btn"
+      id="mobileMenuBtn"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+      aria-controls="mobileMenu"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Mobile Menu Dropdown -->
+    <div class="mobile-menu" id="mobileMenu" role="menu">
+      <a href="#intro" class="active" role="menuitem">Intro</a>
+      <a href="#work" role="menuitem">Work</a>
+      <a href="#about" role="menuitem">About</a>
+      <a href="#contact" role="menuitem">Contact</a>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h1 class="text-3xl font-bold futuristic-font">HASHIR MARWAT</h1>
+        <div class="sidebar-title">
+          <h2 class="text-lg font-semibold">
+            FRONTEND DEVELOPER<br />& UI/UX DESIGNER
+          </h2>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul>
+          <li><a href="#intro" class="nav-link active current">Intro</a></li>
+          <li><a href="#work" class="nav-link">Work</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <p class="text-gray-400 leading-relaxed">
+          I design and develop intuitive, high-performance digital solutions
+          that drive user engagement and solve real-world problems.
+        </p>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="content" id="content">
+      <!-- Intro Section -->
+      <section id="intro" class="section">
+        <div class="video-loading">
+          <div class="spinner"></div>
+        </div>
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          class="video-background"
+          preload="auto"
+          loading="lazy"
+          poster="placeholder.jpg"
+        >
+          <source src="/assets/d.mp4" type="video/mp4" />
+          <source src="/assets/d.webm" type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="content-overlay">
+          <div class="max-w-4xl mx-auto px-6">
+            <div class="mb-16 section-content">
+              <h1 class="text-5xl font-bold mb-6">
+                Hello, I'm <span>Hashir</span>
+              </h1>
+              <p class="text-xl text-gray-300 mb-8 max-w-2xl">
+                I'm a UX/UI designer and frontend developer based in Islamabad,
+                Pakistan. I design and build dynamic digital experiences that
+                bridge business goals with user-centered design, ensuring both
+                visual appeal and functional impact.
+              </p>
+              <a href="#work" class="btn">View My Work</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div
+                class="service-box p-8 rounded-lg section-content"
+                style="transition-delay: 0.1s"
+              >
+                <div class="text-[#00f7ff] text-3xl mb-4">
+                  <i class="fas fa-pen-fancy"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Design</h3>
+                <p class="text-gray-400">
+                  I craft intuitive, user-focused interfaces that solve
+                  real-world problems and elevate digital experiences across web
+                  and mobile platforms.
+                </p>
+              </div>
+              <div
+                class="service-box p-8 rounded-lg section-content"
+                style="transition-delay: 0.2s"
+              >
+                <div class="text-[#00f7ff] text-3xl mb-4">
+                  <i class="fas fa-code"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Development</h3>
+                <p class="text-gray-400">
+                  I write clean, efficient, and scalable code—bringing designs
+                  to life with precision using HTML, CSS, JavaScript, React, and
+                  TailwindCSS.
+                </p>
+              </div>
+              <div
+                class="service-box p-8 rounded-lg section-content"
+                style="transition-delay: 0.3s"
+              >
+                <div class="text-[#00f7ff] text-3xl mb-4">
+                  <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Strategy</h3>
+                <p class="text-gray-400">
+                  I use data-driven insights to inform design and development
+                  decisions that enhance user engagement and support business
+                  growth.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Work Section -->
+      <section id="work" class="section">
+        <div class="stars"></div>
+        <div class="nebula"></div>
+        <div class="content-overlay">
+          <div class="max-w-4xl mx-auto px-6">
+            <h2
+              class="text-4xl font-bold mb-12 text-center section-title section-content"
+            >
+              Selected Work
+            </h2>
+
+            <div class="space-y-20">
+              <!-- Project 1 -->
+              <article class="project-card">
+                <div class="flex flex-col md:flex-row">
+                  <div class="md:w-1/2">
+                    <div class="rounded-lg overflow-hidden relative">
+                      <div class="video-loading">
+                        <div class="spinner"></div>
+                      </div>
+                      <video
+                        class="w-full h-full aspect-video rounded-lg"
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        preload="metadata"
+                        loading="lazy"
+                        poster="project1-poster.jpg"
+                      >
+                        <source src="/assets/promptcontent.mp4" type="video/mp4" />
+                        <source src="/assets/promptcontent.webm" type="video/webm" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+                  <div class="md:w-1/2 p-8">
+                    <span class="text-[#00f7ff] font-semibold"
+                      >Frontend Development</span
+                    >
+                    <h3 class="text-2xl font-bold my-3">Company Website</h3>
+                    <p class="text-gray-400 mb-4">
+                      A professional website showcasing the company's services,
+                      built with HTML, CSS, JS, and TailwindCSS.
+                    </p>
+                    <div class="project-links">
+                      <!-- Live Demo Link -->
+                      <a href="const.html" class="project-link">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                      </a>
+
+                      <!-- View Code Link -->
+                      <a href="const.html" class="project-link">
+                        <i class="fab fa-github"></i> View Code
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Project 2 -->
+              <article class="project-card">
+                <div class="flex flex-col md:flex-row-reverse">
+                  <div class="md:w-1/2">
+                    <div class="rounded-lg overflow-hidden relative">
+                      <div class="video-loading">
+                        <div class="spinner"></div>
+                      </div>
+                      <video
+                        class="w-full h-full aspect-video rounded-lg"
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        preload="metadata"
+                        loading="lazy"
+                        poster="project2-poster.jpg"
+                      >
+                        <source src="/assets/netflix.mp4" type="video/mp4" />
+                        <source src="/assets/netflix.webm" type="video/webm" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+                  <div class="md:w-1/2 p-8">
+                    <span class="text-[#00f7ff] font-semibold"
+                      >Frontend Development</span
+                    >
+                    <h3 class="text-2xl font-bold my-3">Netflix Clone</h3>
+                    <p class="text-gray-400 mb-4">
+                      A Netflix clone built using HTML and CSS, featuring a
+                      clean, user-friendly interface.
+                    </p>
+                    <div class="project-links">
+                      <!-- Live Demo Link -->
+                      <a href="const.html" class="project-link">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                      </a>
+
+                      <!-- View Code Link -->
+                      <a href="const.html" class="project-link">
+                        <i class="fab fa-github"></i> View Code
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Project 3 -->
+              <article class="project-card">
+                <div class="flex flex-col md:flex-row">
+                  <div class="md:w-1/2">
+                    <div class="rounded-lg overflow-hidden relative">
+                      <div class="video-loading">
+                        <div class="spinner"></div>
+                      </div>
+                      <video
+                        class="w-full h-full aspect-video rounded-lg"
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        preload="metadata"
+                        loading="lazy"
+                        poster="project3-poster.jpg"
+                      >
+                        <source src="/assets/fast food.mp4" type="video/mp4" />
+                        <source src="/assets/fast food.webm" type="video/webm" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+                  <div class="md:w-1/2 p-8">
+                    <span class="text-[#00f7ff] font-semibold"
+                      >Frontend Development</span
+                    >
+                    <h3 class="text-2xl font-bold my-3">Fast Food Ordering</h3>
+                    <p class="text-gray-400 mb-4">
+                      A fast food ordering platform built with HTML and CSS to
+                      provide seamless ordering experience.
+                    </p>
+                    <div class="project-links">
+                      <!-- Live Demo Link -->
+                      <a href="const.html" class="project-link">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                      </a>
+
+                      <!-- View Code Link -->
+                      <a href="const.html" class="project-link">
+                        <i class="fab fa-github"></i> View Code
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Project 4 -->
+              <article class="project-card">
+                <div class="flex flex-col md:flex-row-reverse">
+                  <div class="md:w-1/2">
+                    <div class="rounded-lg overflow-hidden relative">
+                      <div class="video-loading">
+                        <div class="spinner"></div>
+                      </div>
+                      <video
+                        class="w-full h-full aspect-video rounded-lg"
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        preload="metadata"
+                        loading="lazy"
+                        poster="project4-poster.jpg"
+                      >
+                        <source src="/assets/gym page.mp4" type="video/mp4" />
+                        <source src="/assets/gym page.webm" type="video/webm" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+                  <div class="md:w-1/2 p-8">
+                    <span class="text-[#00f7ff] font-semibold"
+                      >Frontend Development</span
+                    >
+                    <h3 class="text-2xl font-bold my-3">Gym Page</h3>
+                    <p class="text-gray-400 mb-4">
+                      A gym page built with HTML and CSS, offering workout plans
+                      and fitness tips to users.
+                    </p>
+                    <div class="project-links">
+                      <!-- Live Demo Link -->
+                      <a href="const.html" class="project-link">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                      </a>
+
+                      <!-- View Code Link -->
+                      <a href="const.html" class="project-link">
+                        <i class="fab fa-github"></i> View Code
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Project 5 -->
+              <article class="project-card">
+                <div class="flex flex-col md:flex-row">
+                  <div class="md:w-1/2">
+                    <div class="rounded-lg overflow-hidden relative">
+                      <div class="video-loading">
+                        <div class="spinner"></div>
+                      </div>
+                      <video
+                        class="w-full h-full aspect-video rounded-lg"
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        preload="metadata"
+                        loading="lazy"
+                        poster="project5-poster.jpg"
+                      >
+                        <source src="/assets/react.mp4" type="video/mp4" />
+                        <source src="/assets/react.webm" type="video/webm" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+                  <div class="md:w-1/2 p-8">
+                    <span class="text-[#00f7ff] font-semibold"
+                      >Full Stack Development</span
+                    >
+                    <h3 class="text-2xl font-bold my-3">React Project</h3>
+                    <p class="text-gray-400 mb-4">
+                      A dynamic React application built using HTML, CSS, JS,
+                      TailwindCSS, and React for enhanced interactivity.
+                    </p>
+                    <div class="project-links">
+                      <!-- Live Demo Link -->
+                      <a href="const.html" class="project-link">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                      </a>
+
+                      <!-- View Code Link -->
+                      <a href="const.html" class="project-link">
+                        <i class="fab fa-github"></i> View Code
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="section">
+        <div class="video-loading">
+          <div class="spinner"></div>
+        </div>
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          class="video-background"
+          preload="auto"
+          loading="lazy"
+          poster="about-poster.jpg"
+        >
+          <source src="/assets/h.mp4" type="video/mp4" />
+          <source src="/assets/h.webm" type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
+        <div class="content-overlay">
+          <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row gap-12">
+              <div class="md:w-1/3 section-content">
+                <img
+                  src="me.jpg"
+                  alt="Hashir Marwat"
+                  class="w-full h-80 rounded-xl object-cover"
+                />
+              </div>
+              <div
+                class="md:w-2/3 section-content"
+                style="transition-delay: 0.1s"
+              >
+                <h2 class="text-4xl font-bold mb-6 section-title">About Me</h2>
+                <p class="text-gray-400 mb-6">
+                  I'm a 19-year-old web designer and frontend developer
+                  passionate about building seamless, user-centric digital
+                  experiences. I specialize in transforming complex problems
+                  into clean, intuitive designs and responsive web interfaces
+                  using Figma, HTML, CSS, JavaScript, React, and TailwindCSS.
+                </p>
+                <p class="text-gray-400 mb-8">
+                  Currently, I'm working at a software house, gaining hands-on
+                  experience in real-world projects, while also contributing to
+                  a fast-growing startup—The Prompt Content—as a core team
+                  member, where I handle both design and development roles.
+                </p>
+                <p class="text-gray-400 mb-8">
+                  I combine design strategy with development precision, ensuring
+                  every product I work on is not only functional and
+                  high-performing but also visually impactful.
+                </p>
+
+                <div class="grid grid-cols-2 gap-8 mb-8">
+                  <div>
+                    <h3 class="font-semibold mb-4 text-lg">Skills</h3>
+                    <ul class="space-y-3">
+                      <li class="flex items-center">
+                        <div
+                          class="w-3 h-3 bg-[#00f7ff] rounded-full mr-3"
+                        ></div>
+                        <span>UX/UI Design</span>
+                      </li>
+                      <li class="flex items-center">
+                        <div
+                          class="w-3 h-3 bg-[#00f7ff] rounded-full mr-3"
+                        ></div>
+                        <span>Frontend Development</span>
+                      </li>
+                      <li class="flex items-center">
+                        <div
+                          class="w-3 h-3 bg-[#00f7ff] rounded-full mr-3"
+                        ></div>
+                        <span>Prototyping</span>
+                      </li>
+                      <li class="flex items-center">
+                        <div
+                          class="w-3 h-3 bg-[#00f7ff] rounded-full mr-3"
+                        ></div>
+                        <span>User Research</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold mb-4 text-lg">Tools</h3>
+                    <ul class="space-y-3">
+                      <li class="flex items-center">
+                        <div
+                          class="w-3 h-3 bg-[#00f7ff] rounded-full mr-3"
+                        ></div>
+                        <span>Figma</span>
+                      </li>
+                      <li class="flex items-center">
+                        <div
+                          class="w-3 h-3 bg-[#00f7ff] rounded-full mr-3"
+                        ></div>
+                        <span>Adobe Creative Suite</span>
+                      </li>
+                      <li class="flex items-center">
+                        <div
+                          class="w-3 h-3 bg-[#00f7ff] rounded-full mr-3"
+                        ></div>
+                        <span>HTML/CSS/JS</span>
+                      </li>
+                      <li class="flex items-center">
+                        <div
+                          class="w-3 h-3 bg-[#00f7ff] rounded-full mr-3"
+                        ></div>
+                        <span>React</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-20 section-content" style="transition-delay: 0.2s">
+              <h3 class="text-2xl font-bold mb-6 section-title">Experience</h3>
+
+              <div class="space-y-8">
+                <div class="border-l-2 border-[#00f7ff] pl-6 py-1">
+                  <h4 class="font-bold text-lg">Web Designer</h4>
+                  <p class="text-gray-400">
+                    Personal & Team Projects • 2024 - Present
+                  </p>
+                  <p class="mt-2 text-gray-400">
+                    Crafting modern, intuitive UI/UX designs in Figma with a
+                    strong focus on user behavior and visual hierarchy. Designed
+                    interfaces for diverse platforms including landing pages,
+                    dashboards, and mobile apps.
+                  </p>
+                </div>
+
+                <div class="border-l-2 border-[#00f7ff] pl-6 py-1">
+                  <h4 class="font-bold text-lg">Frontend Developer</h4>
+                  <p class="text-gray-400">
+                    Personal & Team Projects • 2023 - Present
+                  </p>
+                  <p class="mt-2 text-gray-400">
+                    Developing responsive, high-performance web applications
+                    using HTML, CSS, JavaScript, Tailwind CSS, and React.
+                    Passionate about clean code, seamless user experience, and
+                    pixel-perfect implementation from design to deployment.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-20 section-content" style="transition-delay: 0.3s">
+              <h3 class="text-2xl font-bold mb-6 section-title">Education</h3>
+              <div class="border-l-2 border-[#00f7ff] pl-6 py-1">
+                <h4 class="font-bold text-lg">Computer Science (Ongoing)</h4>
+                <p class="text-gray-400">
+                  University Group of Colleges (U.G.C) • 2025 – 2027
+                </p>
+                <p class="mt-2 text-gray-400">
+                  Pursuing a degree with core emphasis on frontend development,
+                  software architecture, and user interface design. Hands-on
+                  learning in real-world projects and collaborative development.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="section">
+        <div class="stars"></div>
+        <div class="nebula"></div>
+        <div class="content-overlay">
+          <div class="max-w-3xl mx-auto px-6">
+            <h2
+              class="text-4xl font-bold mb-4 text-center section-title section-content"
+            >
+              Get in Touch
+            </h2>
+            <p
+              class="text-gray-400 text-center mb-12 max-w-xl mx-auto section-content"
+              style="transition-delay: 0.1s"
+            >
+              Have a project in mind or want to discuss potential opportunities?
+              I'd love to hear from you.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div class="section-content" style="transition-delay: 0.2s">
+                <h3 class="text-xl font-semibold mb-4">Contact Information</h3>
+                <ul class="space-y-4">
+                  <li class="flex items-start">
+                    <i class="fas fa-envelope mt-1 mr-4 text-[#00f7ff]"></i>
+                    <span>hashirmakwt66@gmail.com</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i
+                      class="fas fa-map-marker-alt mt-1 mr-4 text-[#00f7ff]"
+                    ></i>
+                    <span>Islamabad, Pakistan</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-phone mt-1 mr-4 text-[#00f7ff]"></i>
+                    <span>03184961691</span>
+                  </li>
+                </ul>
+
+                <div class="mt-8">
+                  <h3 class="text-xl font-semibold mb-4">Follow Me</h3>
+                  <div class="flex space-x-4">
+                    <a
+                      href="#"
+                      class="social-link text-xl"
+                      aria-label="Dribbble"
+                      ><i class="fab fa-dribbble"></i
+                    ></a>
+                    <a href="#" class="social-link text-xl" aria-label="Twitter"
+                      ><i class="fab fa-twitter"></i
+                    ></a>
+                    <a
+                      href="#"
+                      class="social-link text-xl"
+                      aria-label="LinkedIn"
+                      ><i class="fab fa-linkedin-in"></i
+                    ></a>
+                    <a
+                      href="#"
+                      class="social-link text-xl"
+                      aria-label="Instagram"
+                      ><i class="fab fa-instagram"></i
+                    ></a>
+                    <a href="#" class="social-link text-xl" aria-label="GitHub"
+                      ><i class="fab fa-github"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="section-content" style="transition-delay: 0.3s">
+                <form
+                  id="contactForm"
+                  action="https://formspree.io/f/mqkrqjqj"
+                  method="POST"
+                >
+                  <input
+                    type="hidden"
+                    name="_subject"
+                    value="New contact form submission"
+                  />
+                  <input
+                    type="hidden"
+                    name="_replyto"
+                    value="hashirmakwt66@gmail.com"
+                  />
+                  <input type="hidden" name="_captcha" value="false" />
+
+                  <!-- Honeypot Field -->
+                  <input type="text" name="_gotcha" class="honeypot" />
+
+                  <div class="mb-4">
+                    <label for="name" class="block text-gray-300 mb-2"
+                      >Name</label
+                    >
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      class="form-input"
+                      placeholder="Name"
+                    />
+                    <div class="form-error" id="nameError">
+                      Please enter your name
+                    </div>
+                  </div>
+                  <div class="mb-4">
+                    <label for="email" class="block text-gray-300 mb-2"
+                      >Email</label
+                    >
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      class="form-input"
+                      placeholder="Email"
+                    />
+                    <div class="form-error" id="emailError">
+                      Please enter a valid email
+                    </div>
+                  </div>
+                  <div class="mb-4">
+                    <label for="message" class="block text-gray-300 mb-2"
+                      >Message</label
+                    >
+                    <textarea
+                      rows="4"
+                      id="message"
+                      name="message"
+                      required
+                      class="form-input"
+                      placeholder="Message"
+                    ></textarea>
+                    <div class="form-error" id="messageError">
+                      Please enter your message
+                    </div>
+                  </div>
+                  <button type="submit" class="btn w-full" id="submitBtn">
+                    <span id="btnText">Send Message</span>
+                  </button>
+
+                  <div class="form-success" id="successMessage">
+                    <i
+                      class="fas fa-check-circle text-[#00f7ff] text-2xl mb-2"
+                    ></i>
+                    <p>
+                      Thank you for your message! I'll get back to you soon.
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer
+        class="py-10 text-center text-gray-500 bg-[#0a0a0f] border-t border-gray-800 height-20px"
+      >
+        <p>© 2025 HASHIR MARWAT. All rights reserved.</p>
+      </footer>
+    </main>
+
+    <script>
+      // Performance Optimized Scripts
+      document.addEventListener("DOMContentLoaded", function () {
+        // ===== Mobile Menu =====
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        function toggleMobileMenu() {
+          const isExpanded =
+            mobileMenuBtn.getAttribute("aria-expanded") === "true";
+          mobileMenuBtn.setAttribute("aria-expanded", !isExpanded);
+          mobileMenu.classList.toggle("active");
+        }
+
+        function closeMobileMenu() {
+          mobileMenuBtn.setAttribute("aria-expanded", "false");
+          mobileMenu.classList.remove("active");
+        }
+
+        if (mobileMenuBtn) {
+          mobileMenuBtn.addEventListener("click", toggleMobileMenu);
+
+          // Close when clicking outside
+          document.addEventListener("click", (e) => {
+            if (!mobileMenu.contains(e.target) && e.target !== mobileMenuBtn) {
+              closeMobileMenu();
+            }
+          });
+
+          // Close on escape key
+          document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") closeMobileMenu();
+          });
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll("#mobileMenu a").forEach((link) => {
+          link.addEventListener("click", closeMobileMenu);
+        });
+
+        // ===== Smooth Scrolling =====
+        function smoothScroll(target) {
+          if (target) {
+            const targetPosition =
+              target.getBoundingClientRect().top + window.pageYOffset;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            const duration = 800;
+            let startTime = null;
+
+            function animation(currentTime) {
+              if (!startTime) startTime = currentTime;
+              const timeElapsed = currentTime - startTime;
+              const run = ease(timeElapsed, startPosition, distance, duration);
+              window.scrollTo(0, run);
+              if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+
+            function ease(t, b, c, d) {
+              t /= d / 2;
+              if (t < 1) return (c / 2) * t * t + b;
+              t--;
+              return (-c / 2) * (t * (t - 2) - 1) + b;
+            }
+
+            requestAnimationFrame(animation);
+          }
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            smoothScroll(target);
+          });
+        });
+
+        // ===== Back to Top Button =====
+        const backToTopBtn = document.getElementById("backToTop");
+
+        function toggleBackToTop() {
+          if (window.scrollY > 300) {
+            backToTopBtn.classList.add("visible");
+          } else {
+            backToTopBtn.classList.remove("visible");
+          }
+        }
+
+        if (backToTopBtn) {
+          window.addEventListener("scroll", toggleBackToTop);
+          backToTopBtn.addEventListener("click", () => {
+            smoothScroll(document.body);
+          });
+          toggleBackToTop(); // Initialize
+        }
+
+        // ===== Star Background =====
+        function createStars() {
+          const starsContainers = document.querySelectorAll(".stars");
+          starsContainers.forEach((container) => {
+            // Clear existing stars
+            container.innerHTML = "";
+
+            // Create optimized stars
+            const fragment = document.createDocumentFragment();
+            const starsCount = 100; // Reduced for performance
+
+            for (let i = 0; i < starsCount; i++) {
+              const star = document.createElement("span");
+              star.style.width = `${Math.random() * 2}px`;
+              star.style.height = star.style.width;
+              star.style.left = `${Math.random() * 100}%`;
+              star.style.top = `${Math.random() * 100}%`;
+              star.style.animationDuration = `${2 + Math.random() * 3}s`;
+              star.style.animationDelay = `${Math.random() * 5}s`;
+              fragment.appendChild(star);
+            }
+            container.appendChild(fragment);
+          });
+        }
+
+        // Initialize stars
+        createStars();
+
+        // ===== Scroll Animations with IntersectionObserver =====
+        function initScrollAnimations() {
+          const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -100px 0px",
+          };
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          }, observerOptions);
+
+          document
+            .querySelectorAll(".section-content, .project-card")
+            .forEach((el) => {
+              observer.observe(el);
+            });
+        }
+
+        // Initialize scroll animations
+        initScrollAnimations();
+
+        // ===== Active Navigation Link =====
+        function updateActiveNavLink() {
+          const sections = document.querySelectorAll("section");
+          const navLinks = document.querySelectorAll(
+            ".nav-link, #mobileMenu a"
+          );
+          let current = "";
+
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= sectionTop - sectionHeight / 3) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          navLinks.forEach((link) => {
+            link.classList.remove("active", "current");
+            if (link.getAttribute("href").substring(1) === current) {
+              link.classList.add("active");
+              // Only add 'current' to sidebar links
+              if (link.classList.contains("nav-link")) {
+                link.classList.add("current");
+              }
+            }
+          });
+        }
+
+        // Throttled scroll handler
+        function throttle(func, limit) {
+          let lastFunc;
+          let lastRan;
+          return function () {
+            const context = this;
+            const args = arguments;
+            if (!lastRan) {
+              func.apply(context, args);
+              lastRan = Date.now();
+            } else {
+              clearTimeout(lastFunc);
+              lastFunc = setTimeout(function () {
+                if (Date.now() - lastRan >= limit) {
+                  func.apply(context, args);
+                  lastRan = Date.now();
+                }
+              }, limit - (Date.now() - lastRan));
+            }
+          };
+        }
+
+        // Replace your scroll listener with this:
+        window.addEventListener(
+          "scroll",
+          throttle(() => {
+            requestAnimationFrame(() => {
+              updateActiveNavLink();
+              toggleBackToTop();
+            });
+          }, 50),
+          { passive: true }
+        );
+
+        // Initialize
+        updateActiveNavLink();
+
+        // ===== Video Loading States =====
+        function handleVideoLoading() {
+          document.querySelectorAll("video").forEach((video) => {
+            const loadingElement =
+              video.parentElement.querySelector(".video-loading");
+
+            if (loadingElement) {
+              video.addEventListener("loadeddata", () => {
+                loadingElement.style.display = "none";
+              });
+
+              video.addEventListener("error", () => {
+                loadingElement.style.display = "none";
+                // Show poster image if video fails to load
+                if (video.poster) {
+                  const img = document.createElement("img");
+                  img.src = video.poster;
+                  img.alt = "Video poster";
+                  img.className = "w-full h-full object-cover";
+                  video.parentElement.insertBefore(img, video);
+                  video.style.display = "none";
+                }
+              });
+            }
+          });
+        }
+
+        handleVideoLoading();
+
+        // ===== Form Validation and Submission =====
+        const contactForm = document.getElementById("contactForm");
+        if (contactForm) {
+          const submitBtn = document.getElementById("submitBtn");
+          const btnText = document.getElementById("btnText");
+          const successMessage = document.getElementById("successMessage");
+
+          // Add shake animation to CSS
+          const style = document.createElement("style");
+          style.textContent = `
+          @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+          }
+          .form-input.error {
+            border-color: #ff4444 !important;
+            box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.2) !important;
+            background-color: #ffeeee !important;
+            color: #ff4444 !important;
+          }
+          .form-error {
+            color: #ff4444 !important;
+          }
+        `;
+          document.head.appendChild(style);
+
+          function validateForm() {
+            let isValid = true;
+
+            // Validate name
+            const name = contactForm.elements["name"];
+            const nameError = document.getElementById("nameError");
+            if (!name.value.trim()) {
+              name.classList.add("error");
+              nameError.style.display = "block";
+              isValid = false;
+              name.style.animation = "shake 0.5s";
+              setTimeout(() => (name.style.animation = ""), 500);
+            } else {
+              name.classList.remove("error");
+              nameError.style.display = "none";
+            }
+
+            // Validate email
+            const email = contactForm.elements["email"];
+            const emailError = document.getElementById("emailError");
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (email.value.trim() === "@gmail.com") {
+              email.classList.add("error");
+              emailError.textContent =
+                "Email is incorrect. Please enter a valid email address.";
+              emailError.style.display = "block";
+              isValid = false;
+              email.style.animation = "shake 0.5s";
+              setTimeout(() => (email.style.animation = ""), 500);
+            } else if (!emailRegex.test(email.value)) {
+              email.classList.add("error");
+              emailError.textContent = "Please enter a valid email";
+              emailError.style.display = "block";
+              isValid = false;
+              email.style.animation = "shake 0.5s";
+              setTimeout(() => (email.style.animation = ""), 500);
+            } else {
+              email.classList.remove("error");
+              emailError.style.display = "none";
+            }
+
+            // Validate message
+            const message = contactForm.elements["message"];
+            const messageError = document.getElementById("messageError");
+            if (!message.value.trim()) {
+              message.classList.add("error");
+              messageError.style.display = "block";
+              isValid = false;
+              message.style.animation = "shake 0.5s";
+              setTimeout(() => (message.style.animation = ""), 500);
+            } else {
+              message.classList.remove("error");
+              messageError.style.display = "none";
+            }
+
+            return isValid;
+          }
+
+          contactForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            if (!validateForm()) return;
+
+            submitBtn.classList.add("btn-loading");
+            btnText.style.visibility = "hidden";
+
+            try {
+              const response = await fetch(contactForm.action, {
+                method: "POST",
+                body: new FormData(contactForm),
+                headers: {
+                  Accept: "application/json",
+                },
+              });
+
+              const data = await response.json();
+
+              if (response.ok) {
+                // Success case
+                contactForm.reset();
+                successMessage.style.display = "block";
+                setTimeout(() => {
+                  successMessage.style.display = "none";
+                }, 5000);
+              } else {
+                // Handle Formspree-specific errors
+                if (data.error === "form_not_verified") {
+                  const emailUsed =
+                    contactForm.elements["email"].value || "your email";
+                  alert(
+                    `Please check ${emailUsed} for a verification link from Formspree!`
+                  );
+                } else {
+                  alert(
+                    data.error || "Submission error. Please try again later."
+                  );
+                }
+              }
+            } catch (error) {
+              console.error("Error:", error);
+              if (!error.message.includes("verification")) {
+                alert("Network error. Please check your connection.");
+              }
+            } finally {
+              submitBtn.classList.remove("btn-loading");
+              btnText.style.visibility = "visible";
+            }
+          });
+
+          // Real-time validation
+          contactForm.addEventListener("input", function (e) {
+            if (e.target.name === "name") {
+              const nameError = document.getElementById("nameError");
+              if (e.target.value.trim()) {
+                e.target.classList.remove("error");
+                nameError.style.display = "none";
+              }
+            }
+
+            if (e.target.name === "email") {
+              const emailError = document.getElementById("emailError");
+              const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+              const emailValue = e.target.value.trim();
+
+              if (emailValue === "@gmail.com") {
+                e.target.classList.add("error");
+                emailError.textContent =
+                  "Email is incorrect. Please enter a valid email address.";
+                emailError.style.display = "block";
+              } else if (emailValue && !emailRegex.test(emailValue)) {
+                e.target.classList.add("error");
+                emailError.textContent = "Please enter a valid email";
+                emailError.style.display = "block";
+              } else {
+                e.target.classList.remove("error");
+                emailError.style.display = "none";
+              }
+            }
+
+            if (e.target.name === "message") {
+              const messageError = document.getElementById("messageError");
+              if (e.target.value.trim()) {
+                e.target.classList.remove("error");
+                messageError.style.display = "none";
+              }
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
