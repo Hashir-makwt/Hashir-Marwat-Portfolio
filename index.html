@@ -544,49 +544,24 @@
         background: rgba(var(--primary-rgb), 0.3);
       }
 
-      /* Loading States */
-      .video-loading {
-        position: absolute;
-        top: 0;
-        left: 0;
+      /* Project Video Placeholder */
+      .video-placeholder {
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5);
+        min-height: 300px;
+        background: rgba(30, 30, 40, 0.5);
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        z-index: 1;
-      }
-
-      .spinner {
-        width: 40px;
-        height: 40px;
-        border: 4px solid rgba(255, 255, 255, 0.3);
-        border-top-color: var(--primary);
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-      }
-
-      /* Skeleton Loading */
-      .skeleton {
-        background: linear-gradient(
-          90deg,
-          rgba(30, 30, 40, 0.5) 25%,
-          rgba(50, 50, 60, 0.5) 50%,
-          rgba(30, 30, 40, 0.5) 75%
-        );
-        background-size: 200% 100%;
-        animation: shimmer 1.5s infinite;
+        color: var(--text-gray);
         border-radius: 8px;
       }
 
-      @keyframes shimmer {
-        0% {
-          background-position: 200% 0;
-        }
-        100% {
-          background-position: -200% 0;
-        }
+      .video-placeholder i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: var(--primary);
       }
 
       /* Responsive Design */
@@ -704,9 +679,6 @@
     <main class="content" id="content">
       <!-- Intro Section -->
       <section id="intro" class="section">
-        <div class="video-loading">
-          <div class="spinner"></div>
-        </div>
         <video
           autoplay
           muted
@@ -801,24 +773,9 @@
               <article class="project-card">
                 <div class="flex flex-col md:flex-row">
                   <div class="md:w-1/2">
-                    <div class="rounded-lg overflow-hidden relative">
-                      <div class="video-loading">
-                        <div class="spinner"></div>
-                      </div>
-                      <video
-                        class="w-full h-full aspect-video rounded-lg"
-                        autoplay
-                        loop
-                        muted
-                        playsinline
-                        preload="metadata"
-                        loading="lazy"
-                        poster="project1-poster.jpg"
-                      >
-                        <source src="/assets/promptcontent.mp4" type="video/mp4" />
-                        <source src="/assets/promptcontent.webm" type="video/webm" />
-                        Your browser does not support the video tag.
-                      </video>
+                    <div class="video-placeholder">
+                      <i class="fas fa-laptop-code"></i>
+                      <p>Company Website Preview</p>
                     </div>
                   </div>
                   <div class="md:w-1/2 p-8">
@@ -849,24 +806,9 @@
               <article class="project-card">
                 <div class="flex flex-col md:flex-row-reverse">
                   <div class="md:w-1/2">
-                    <div class="rounded-lg overflow-hidden relative">
-                      <div class="video-loading">
-                        <div class="spinner"></div>
-                      </div>
-                      <video
-                        class="w-full h-full aspect-video rounded-lg"
-                        autoplay
-                        loop
-                        muted
-                        playsinline
-                        preload="metadata"
-                        loading="lazy"
-                        poster="project2-poster.jpg"
-                      >
-                        <source src="/assets/netflix.mp4" type="video/mp4" />
-                        <source src="/assets/netflix.webm" type="video/webm" />
-                        Your browser does not support the video tag.
-                      </video>
+                    <div class="video-placeholder">
+                      <i class="fas fa-film"></i>
+                      <p>Netflix Clone Preview</p>
                     </div>
                   </div>
                   <div class="md:w-1/2 p-8">
@@ -897,24 +839,9 @@
               <article class="project-card">
                 <div class="flex flex-col md:flex-row">
                   <div class="md:w-1/2">
-                    <div class="rounded-lg overflow-hidden relative">
-                      <div class="video-loading">
-                        <div class="spinner"></div>
-                      </div>
-                      <video
-                        class="w-full h-full aspect-video rounded-lg"
-                        autoplay
-                        loop
-                        muted
-                        playsinline
-                        preload="metadata"
-                        loading="lazy"
-                        poster="project3-poster.jpg"
-                      >
-                        <source src="/assets/fast food.mp4" type="video/mp4" />
-                        <source src="/assets/fast food.webm" type="video/webm" />
-                        Your browser does not support the video tag.
-                      </video>
+                    <div class="video-placeholder">
+                      <i class="fas fa-hamburger"></i>
+                      <p>Fast Food Ordering Preview</p>
                     </div>
                   </div>
                   <div class="md:w-1/2 p-8">
@@ -945,24 +872,9 @@
               <article class="project-card">
                 <div class="flex flex-col md:flex-row-reverse">
                   <div class="md:w-1/2">
-                    <div class="rounded-lg overflow-hidden relative">
-                      <div class="video-loading">
-                        <div class="spinner"></div>
-                      </div>
-                      <video
-                        class="w-full h-full aspect-video rounded-lg"
-                        autoplay
-                        loop
-                        muted
-                        playsinline
-                        preload="metadata"
-                        loading="lazy"
-                        poster="project4-poster.jpg"
-                      >
-                        <source src="/assets/gym page.mp4" type="video/mp4" />
-                        <source src="/assets/gym page.webm" type="video/webm" />
-                        Your browser does not support the video tag.
-                      </video>
+                    <div class="video-placeholder">
+                      <i class="fas fa-dumbbell"></i>
+                      <p>Gym Page Preview</p>
                     </div>
                   </div>
                   <div class="md:w-1/2 p-8">
@@ -993,24 +905,9 @@
               <article class="project-card">
                 <div class="flex flex-col md:flex-row">
                   <div class="md:w-1/2">
-                    <div class="rounded-lg overflow-hidden relative">
-                      <div class="video-loading">
-                        <div class="spinner"></div>
-                      </div>
-                      <video
-                        class="w-full h-full aspect-video rounded-lg"
-                        autoplay
-                        loop
-                        muted
-                        playsinline
-                        preload="metadata"
-                        loading="lazy"
-                        poster="project5-poster.jpg"
-                      >
-                        <source src="/assets/react.mp4" type="video/mp4" />
-                        <source src="/assets/react.webm" type="video/webm" />
-                        Your browser does not support the video tag.
-                      </video>
+                    <div class="video-placeholder">
+                      <i class="fab fa-react"></i>
+                      <p>React Project Preview</p>
                     </div>
                   </div>
                   <div class="md:w-1/2 p-8">
@@ -1043,9 +940,6 @@
 
       <!-- About Section -->
       <section id="about" class="section">
-        <div class="video-loading">
-          <div class="spinner"></div>
-        </div>
         <video
           autoplay
           muted
@@ -1065,7 +959,7 @@
             <div class="flex flex-col md:flex-row gap-12">
               <div class="md:w-1/3 section-content">
                 <img
-                  src="me.jpg"
+                  src="/assets/me.jpg"
                   alt="Hashir Marwat"
                   class="w-full h-80 rounded-xl object-cover"
                 />
@@ -1587,35 +1481,6 @@
 
         // Initialize
         updateActiveNavLink();
-
-        // ===== Video Loading States =====
-        function handleVideoLoading() {
-          document.querySelectorAll("video").forEach((video) => {
-            const loadingElement =
-              video.parentElement.querySelector(".video-loading");
-
-            if (loadingElement) {
-              video.addEventListener("loadeddata", () => {
-                loadingElement.style.display = "none";
-              });
-
-              video.addEventListener("error", () => {
-                loadingElement.style.display = "none";
-                // Show poster image if video fails to load
-                if (video.poster) {
-                  const img = document.createElement("img");
-                  img.src = video.poster;
-                  img.alt = "Video poster";
-                  img.className = "w-full h-full object-cover";
-                  video.parentElement.insertBefore(img, video);
-                  video.style.display = "none";
-                }
-              });
-            }
-          });
-        }
-
-        handleVideoLoading();
 
         // ===== Form Validation and Submission =====
         const contactForm = document.getElementById("contactForm");
