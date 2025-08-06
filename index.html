@@ -270,63 +270,65 @@
         margin-right: 5px;
       }
 
-      /* Mobile Menu Button */
-      .mobile-menu-btn {
-        display: none;
-        position: fixed;
-        top: 25px;
-        right: 25px;
-        background: transparent;
-        border: none;
-        color: var(--primary);
-        font-size: 1.5rem;
-        z-index: 30;
-        cursor: pointer;
-        padding: 10px;
-        border-radius: 50%;
-        transition: all 0.3s ease;
-      }
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: none;
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  background: transparent;
+  border: none;
+  color: var(--primary);
+  font-size: 1.5rem;
+  z-index: 30;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
 
-      .mobile-menu-btn:hover {
-        background: rgba(var(--primary-rgb), 0.1);
-      }
+/* Remove hover effect */
+.mobile-menu-btn:hover {
+  background: transparent;
+  transform: none;
+}
 
-      .mobile-menu-btn.active {
-        color: white;
-      }
+.mobile-menu-btn.active {
+  color: white;
+}
 
-      /* Mobile Menu Links - Ultra Smooth */
-      .mobile-menu {
-        display: none;
-        position: fixed;
-        top: 80px;
-        right: 25px;
-        background: rgba(18, 18, 24, 0.95);
-        backdrop-filter: blur(10px);
-        border-radius: 8px;
-        padding: 20px;
-        z-index: 25;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-        border: 1px solid rgba(var(--primary-rgb), 0.2);
-      }
+/* Mobile Menu Links */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 80px;
+  right: 25px;
+  background: rgba(18, 18, 24, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  padding: 20px;
+  z-index: 25;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(var(--primary-rgb), 0.2);
+}
 
-      .mobile-menu.active {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-      }
+.mobile-menu.active {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 
-      .mobile-menu a {
-        color: var(--text-gray);
-        padding: 10px;
-        text-decoration: none;
-        will-change: color;
-        transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      }
+.nav-mobile-link {
+  color: var(--text-gray);
+  padding: 10px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: block;
+}
 
-      .mobile-menu a:hover {
-        color: var(--primary);
-      }
+.nav-mobile-link:hover {
+  color: var(--primary);
+}
 
       /* Hide mobile menu button on desktop */
       @media (min-width: 1025px) {
@@ -623,24 +625,24 @@
     </style>
   </head>
   <body>
-    <!-- Mobile Menu Button -->
-    <button
-      class="mobile-menu-btn"
-      id="mobileMenuBtn"
-      aria-label="Toggle menu"
-      aria-expanded="false"
-      aria-controls="mobileMenu"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
+<!-- Mobile Menu Button -->
+<button
+  class="mobile-menu-btn"
+  id="mobileMenuBtn"
+  aria-label="Toggle menu"
+  aria-expanded="false"
+>
+  <i class="fas fa-bars" id="menuIcon"></i>
+</button>
 
-    <!-- Mobile Menu Dropdown -->
-    <div class="mobile-menu" id="mobileMenu" role="menu">
-      <a href="#intro" class="active" role="menuitem">Intro</a>
-      <a href="#work" role="menuitem">Work</a>
-      <a href="#about" role="menuitem">About</a>
-      <a href="#contact" role="menuitem">Contact</a>
-    </div>
+<!-- Mobile Menu Dropdown -->
+<div class="mobile-menu" id="mobileMenu" role="menu" aria-hidden="true">
+  <a href="#intro" class="nav-mobile-link active" role="menuitem">Intro</a>
+  <a href="#work" class="nav-mobile-link" role="menuitem">Work</a>
+  <a href="#about" class="nav-mobile-link" role="menuitem">About</a>
+  <a href="#contact" class="nav-mobile-link" role="menuitem">Contact</a>
+</div>
+  
 
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
@@ -1270,42 +1272,59 @@
     <script>
       // Performance Optimized Scripts
       document.addEventListener("DOMContentLoaded", function () {
-        // ===== Mobile Menu =====
-        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-        const mobileMenu = document.getElementById("mobileMenu");
+// ===== Mobile Menu =====
+const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+const menuIcon = document.getElementById("menuIcon");
 
-        function toggleMobileMenu() {
-          const isExpanded =
-            mobileMenuBtn.getAttribute("aria-expanded") === "true";
-          mobileMenuBtn.setAttribute("aria-expanded", !isExpanded);
-          mobileMenu.classList.toggle("active");
-        }
+function toggleMobileMenu() {
+  const isExpanded = mobileMenuBtn.getAttribute("aria-expanded") === "true";
+  
+  // Toggle menu visibility
+  mobileMenuBtn.setAttribute("aria-expanded", !isExpanded);
+  mobileMenu.setAttribute("aria-hidden", isExpanded);
+  
+  // Toggle active class
+  mobileMenu.classList.toggle("active");
+  
+  // Change icon
+  if (!isExpanded) {
+    menuIcon.classList.remove("fa-bars");
+    menuIcon.classList.add("fa-times");
+  } else {
+    menuIcon.classList.remove("fa-times");
+    menuIcon.classList.add("fa-bars");
+  }
+}
 
-        function closeMobileMenu() {
-          mobileMenuBtn.setAttribute("aria-expanded", "false");
-          mobileMenu.classList.remove("active");
-        }
+function closeMobileMenu() {
+  mobileMenuBtn.setAttribute("aria-expanded", "false");
+  mobileMenu.setAttribute("aria-hidden", "true");
+  mobileMenu.classList.remove("active");
+  menuIcon.classList.remove("fa-times");
+  menuIcon.classList.add("fa-bars");
+}
 
-        if (mobileMenuBtn) {
-          mobileMenuBtn.addEventListener("click", toggleMobileMenu);
+if (mobileMenuBtn) {
+  mobileMenuBtn.addEventListener("click", toggleMobileMenu);
 
-          // Close when clicking outside
-          document.addEventListener("click", (e) => {
-            if (!mobileMenu.contains(e.target) && e.target !== mobileMenuBtn) {
-              closeMobileMenu();
-            }
-          });
+  // Close when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!mobileMenu.contains(e.target) && e.target !== mobileMenuBtn) {
+      closeMobileMenu();
+    }
+  });
 
-          // Close on escape key
-          document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape") closeMobileMenu();
-          });
-        }
+  // Close on escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMobileMenu();
+  });
+}
 
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll("#mobileMenu a").forEach((link) => {
-          link.addEventListener("click", closeMobileMenu);
-        });
+// Close mobile menu when clicking on a link
+document.querySelectorAll(".nav-mobile-link").forEach((link) => {
+  link.addEventListener("click", closeMobileMenu);
+});
 
         // ===== Smooth Scrolling =====
         function smoothScroll(target) {
