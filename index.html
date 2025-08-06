@@ -297,7 +297,23 @@
   color: white;
 }
 
-/* Mobile Menu Links */
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: none;
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  background: transparent;
+  border: none;
+  color: var(--primary);
+  font-size: 1.5rem;
+  z-index: 30;
+  cursor: pointer;
+  padding: 10px;
+}
+
+/* Mobile Menu */
+/* Mobile Menu Links - Ultra Smooth */
 .mobile-menu {
   display: none;
   position: fixed;
@@ -309,7 +325,7 @@
   padding: 20px;
   z-index: 25;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(var(--primary-rgb), 0.2);
+  border: 4px solid rgba(var(--primary-rgb), 0.5); /* Updated border */
 }
 
 .mobile-menu.active {
@@ -322,14 +338,17 @@
   color: var(--text-gray);
   padding: 10px;
   text-decoration: none;
-  transition: color 0.2s ease;
-  display: block;
 }
 
 .nav-mobile-link:hover {
   color: var(--primary);
 }
 
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+}
       /* Hide mobile menu button on desktop */
       @media (min-width: 1025px) {
         .mobile-menu-btn {
@@ -636,14 +655,12 @@
 </button>
 
 <!-- Mobile Menu Dropdown -->
-<div class="mobile-menu" id="mobileMenu" role="menu" aria-hidden="true">
-  <a href="#intro" class="nav-mobile-link active" role="menuitem">Intro</a>
-  <a href="#work" class="nav-mobile-link" role="menuitem">Work</a>
-  <a href="#about" class="nav-mobile-link" role="menuitem">About</a>
-  <a href="#contact" class="nav-mobile-link" role="menuitem">Contact</a>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#intro" class="nav-mobile-link active">Intro</a>
+  <a href="#work" class="nav-mobile-link">Work</a>
+  <a href="#about" class="nav-mobile-link">About</a>
+  <a href="#contact" class="nav-mobile-link">Contact</a>
 </div>
-  
-
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
       <i class="fas fa-arrow-up"></i>
@@ -1273,59 +1290,60 @@
       // Performance Optimized Scripts
       document.addEventListener("DOMContentLoaded", function () {
 // ===== Mobile Menu =====
+// ===== Mobile Menu =====
 const mobileMenuBtn = document.getElementById("mobileMenuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
 const menuIcon = document.getElementById("menuIcon");
 
-function toggleMobileMenu() {
-  const isExpanded = mobileMenuBtn.getAttribute("aria-expanded") === "true";
+// Simple toggle function
+function toggleMenu() {
+  const isOpen = mobileMenu.classList.contains("active");
   
-  // Toggle menu visibility
-  mobileMenuBtn.setAttribute("aria-expanded", !isExpanded);
-  mobileMenu.setAttribute("aria-hidden", isExpanded);
-  
-  // Toggle active class
-  mobileMenu.classList.toggle("active");
-  
-  // Change icon
-  if (!isExpanded) {
-    menuIcon.classList.remove("fa-bars");
-    menuIcon.classList.add("fa-times");
+  if (isOpen) {
+    // Close menu
+    mobileMenu.classList.remove("active");
+    mobileMenuBtn.setAttribute("aria-expanded", "false");
+    menuIcon.classList.replace("fa-times", "fa-bars");
   } else {
-    menuIcon.classList.remove("fa-times");
-    menuIcon.classList.add("fa-bars");
+    // Open menu
+    mobileMenu.classList.add("active");
+    mobileMenuBtn.setAttribute("aria-expanded", "true");
+    menuIcon.classList.replace("fa-bars", "fa-times");
   }
 }
 
-function closeMobileMenu() {
-  mobileMenuBtn.setAttribute("aria-expanded", "false");
-  mobileMenu.setAttribute("aria-hidden", "true");
-  mobileMenu.classList.remove("active");
-  menuIcon.classList.remove("fa-times");
-  menuIcon.classList.add("fa-bars");
-}
-
-if (mobileMenuBtn) {
-  mobileMenuBtn.addEventListener("click", toggleMobileMenu);
-
-  // Close when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!mobileMenu.contains(e.target) && e.target !== mobileMenuBtn) {
-      closeMobileMenu();
-    }
-  });
-
-  // Close on escape key
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeMobileMenu();
-  });
-}
-
-// Close mobile menu when clicking on a link
-document.querySelectorAll(".nav-mobile-link").forEach((link) => {
-  link.addEventListener("click", closeMobileMenu);
+// Click event
+mobileMenuBtn.addEventListener("click", function(e) {
+  e.stopPropagation(); // Prevent event from bubbling up
+  toggleMenu();
 });
 
+// Close when clicking outside
+document.addEventListener("click", function(e) {
+  if (!mobileMenu.contains(e.target) && e.target !== mobileMenuBtn) {
+    mobileMenu.classList.remove("active");
+    mobileMenuBtn.setAttribute("aria-expanded", "false");
+    menuIcon.classList.replace("fa-times", "fa-bars");
+  }
+});
+
+// Close when clicking on links
+document.querySelectorAll(".nav-mobile-link").forEach(link => {
+  link.addEventListener("click", function() {
+    mobileMenu.classList.remove("active");
+    mobileMenuBtn.setAttribute("aria-expanded", "false");
+    menuIcon.classList.replace("fa-times", "fa-bars");
+  });
+});
+
+// Close on escape key
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") {
+    mobileMenu.classList.remove("active");
+    mobileMenuBtn.setAttribute("aria-expanded", "false");
+    menuIcon.classList.replace("fa-times", "fa-bars");
+  }
+});
         // ===== Smooth Scrolling =====
         function smoothScroll(target) {
           if (target) {
