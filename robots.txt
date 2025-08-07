@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://hashir-makwt.github.io/Hashir-Marwat-Portfolio/sitemap.xml
