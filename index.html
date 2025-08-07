@@ -1,82 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Hashir Marwat - Frontend Developer | UI/UX Designer | Portfolio</title>
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Hashir Marwat - Frontend Developer | UI/UX Designer | Portfolio</title>
 
-  <!-- Basic Meta Tags -->
-  <meta name="description" content="Hashir Marwat – a professional Frontend Developer & UI/UX Designer. Explore my modern portfolio showcasing innovative, high-performance websites and user-centric designs." />
-  <meta name="keywords" content="Hashir Marwat, frontend developer, UI UX designer, web developer Islamabad, portfolio website, HTML CSS JavaScript Tailwind, responsive web design, web animations, personal website" />
-  <meta name="author" content="Hashir Marwat" />
-  <meta name="language" content="en" />
-  <meta name="robots" content="index, follow" />
-  <meta name="distribution" content="global" />
-  <meta name="rating" content="general" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="MobileOptimized" content="320" />
-  <meta name="google" content="notranslate" />
-  <meta name="google-site-verification" content="your-verification-code-here" />
+    <meta http-equiv="Content-Security-Policy" 
+        content="default-src 'self'; 
+                 script-src 'self' https://cdn.tailwindcss.com; 
+                 style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; 
+                 font-src https://cdnjs.cloudflare.com https://fonts.gstatic.com;
+                 img-src 'self' data:;
+                 connect-src 'self' https://formspree.io">
 
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://hashir-makwt.github.io/Hashir-Marwat-Portfolio/" />
+    <!-- Basic Meta Tags -->
+    <meta name="description" content="Hashir Marwat – a professional Frontend Developer & UI/UX Designer. Explore my modern portfolio showcasing innovative, high-performance websites and user-centric designs." />
+    <meta name="keywords" content="Hashir Marwat, frontend developer, UI UX designer, web developer Islamabad, portfolio website, HTML CSS JavaScript Tailwind, responsive web design, web animations, personal website" />
+    <meta name="author" content="Hashir Marwat" />
+    <meta name="language" content="en" />
+    <meta name="robots" content="index, follow" />
+    <meta name="distribution" content="global" />
+    <meta name="rating" content="general" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="google" content="notranslate" />
+    <meta name="google-site-verification" content="your-verification-code-here" />
 
-  <!-- Open Graph Meta Tags (Facebook, LinkedIn) -->
-  <meta property="og:title" content="Hashir Marwat - Frontend Developer Portfolio" />
-  <meta property="og:description" content="Discover the portfolio of Hashir Marwat, a skilled Frontend Developer and UI/UX designer building intuitive and responsive web experiences." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://hashir-makwt.github.io/Hashir-Marwat-Portfolio/" />
-  <meta property="og:image" content="https://hashir-makwt.github.io/Hashir-Marwat-Portfolio/assets/fav2.png" />
-  <meta property="og:site_name" content="Hashir Marwat Portfolio" />
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hashir-makwt.github.io/Hashir-Marwat-Portfolio/" />
 
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Hashir Marwat - Frontend Developer Portfolio" />
-  <meta name="twitter:description" content="Explore Hashir's portfolio: High-performance websites, UI/UX design, HTML, CSS, JavaScript, TailwindCSS." />
-  <meta name="twitter:image" content="https://hashir-makwt.github.io/Hashir-Marwat-Portfolio/assets/fav2.png" />
-  <meta name="twitter:site" content="@hashirmarwat" />
+    <!-- Open Graph Meta Tags (Facebook, LinkedIn) -->
+    <meta property="og:title" content="Hashir Marwat - Frontend Developer Portfolio" />
+    <meta property="og:description" content="Discover the portfolio of Hashir Marwat, a skilled Frontend Developer and UI/UX designer building intuitive and responsive web experiences." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hashir-makwt.github.io/Hashir-Marwat-Portfolio/" />
+    <meta property="og:image" content="https://hashir-makwt.github.io/Hashir-Marwat-Portfolio/assets/fav2.png" />
+    <meta property="og:site_name" content="Hashir Marwat Portfolio" />
 
-  <!-- Favicon -->
-  <link rel="icon" href="/assets/fav2.png" type="image/x-icon" />
-  <link rel="shortcut icon" href="/assets/fav2.png" type="image/x-icon" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/fav2.png" />
-  <link rel="manifest" href="site.webmanifest" />
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Hashir Marwat - Frontend Developer Portfolio" />
+    <meta name="twitter:description" content="Explore Hashir's portfolio: High-performance websites, UI/UX design, HTML, CSS, JavaScript, TailwindCSS." />
+    <meta name="twitter:image" content="https://hashir-makwt.github.io/Hashir-Marwat-Portfolio/assets/fav2.png" />
+    <meta name="twitter:site" content="@hashirmarwat" />
 
-  <!-- Preloading for Performance -->
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" crossorigin />
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&family=Audiowide&display=swap" as="style" crossorigin />
-  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/fav2.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/assets/fav2.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/fav2.png" />
+    <link rel="manifest" href="site.webmanifest" />
 
-  <!-- Stylesheets & Fonts -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&family=Audiowide&display=swap"
-    rel="stylesheet"
-  />
+    <!-- Preloading for Performance -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" crossorigin />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&family=Audiowide&display=swap" as="style" crossorigin />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
 
-  <!-- SEO & Web Accessibility Enhancements -->
-  <meta name="theme-color" content="#0f172a" />
-  <meta name="color-scheme" content="light dark" />
-  <meta name="msapplication-TileColor" content="#0f172a" />
-  <meta name="msapplication-config" content="browserconfig.xml" />
+    <!-- Stylesheets & Fonts with Integrity Check -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link 
+      rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+      crossorigin="anonymous" />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&family=Audiowide&display=swap"
+      rel="stylesheet" />
 
-  <!-- Extra Tags for Better Indexing -->
-  <meta name="subject" content="Personal Portfolio - Hashir Marwat" />
-  <meta name="url" content="https://hashir-makwt.github.io/Hashir-Marwat-Portfolio/" />
-  <meta name="coverage" content="Worldwide" />
-  <meta name="revisit-after" content="7 days" />
-  <meta name="audience" content="All" />
+    <!-- SEO & Web Accessibility Enhancements -->
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="msapplication-TileColor" content="#0f172a" />
+    <meta name="msapplication-config" content="browserconfig.xml" />
 
-  <!-- Link to main HTML structure (optional if using partials) -->
-  <link rel="html" href="const.html" />
-  <link rel="stylesheet" href="const.html" />
+    <!-- Extra Tags for Better Indexing -->
+    <meta name="subject" content="Personal Portfolio - Hashir Marwat" />
+    <meta name="url" content="https://hashir-makwt.github.io/Hashir-Marwat-Portfolio/" />
+    <meta name="coverage" content="Worldwide" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="audience" content="All" />
 
+    <!-- Link to main HTML structure (optional if using partials) -->
+    <link rel="html" href="const.html" />
+    <link rel="stylesheet" href="const.html" />
 
     <style>
       /* CSS Variables */
@@ -1326,416 +1334,424 @@
       </footer>
     </main>
 
-    <script>
-      // Performance Optimized Scripts
-      document.addEventListener("DOMContentLoaded", function () {
-// ===== Mobile Menu =====
-// ===== Mobile Menu =====
-const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-const mobileMenu = document.getElementById("mobileMenu");
-const menuIcon = document.getElementById("menuIcon");
+<script>
+  // Performance Optimized Scripts
+  document.addEventListener("DOMContentLoaded", function () {
+    // ===== Mobile Menu =====
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const menuIcon = document.getElementById("menuIcon");
 
-// Simple toggle function
-function toggleMenu() {
-  const isOpen = mobileMenu.classList.contains("active");
-  
-  if (isOpen) {
-    // Close menu
-    mobileMenu.classList.remove("active");
-    mobileMenuBtn.setAttribute("aria-expanded", "false");
-    menuIcon.classList.replace("fa-times", "fa-bars");
-  } else {
-    // Open menu
-    mobileMenu.classList.add("active");
-    mobileMenuBtn.setAttribute("aria-expanded", "true");
-    menuIcon.classList.replace("fa-bars", "fa-times");
-  }
-}
+    // Simple toggle function
+    function toggleMenu() {
+      const isOpen = mobileMenu.classList.contains("active");
+      
+      if (isOpen) {
+        // Close menu
+        mobileMenu.classList.remove("active");
+        mobileMenuBtn.setAttribute("aria-expanded", "false");
+        menuIcon.classList.replace("fa-times", "fa-bars");
+      } else {
+        // Open menu
+        mobileMenu.classList.add("active");
+        mobileMenuBtn.setAttribute("aria-expanded", "true");
+        menuIcon.classList.replace("fa-bars", "fa-times");
+      }
+    }
 
-// Click event
-mobileMenuBtn.addEventListener("click", function(e) {
-  e.stopPropagation(); // Prevent event from bubbling up
-  toggleMenu();
-});
+    // Click event
+    mobileMenuBtn.addEventListener("click", function(e) {
+      e.stopPropagation(); // Prevent event from bubbling up
+      toggleMenu();
+    });
 
-// Close when clicking outside
-document.addEventListener("click", function(e) {
-  if (!mobileMenu.contains(e.target) && e.target !== mobileMenuBtn) {
-    mobileMenu.classList.remove("active");
-    mobileMenuBtn.setAttribute("aria-expanded", "false");
-    menuIcon.classList.replace("fa-times", "fa-bars");
-  }
-});
+    // Close when clicking outside
+    document.addEventListener("click", function(e) {
+      if (!mobileMenu.contains(e.target) && e.target !== mobileMenuBtn) {
+        mobileMenu.classList.remove("active");
+        mobileMenuBtn.setAttribute("aria-expanded", "false");
+        menuIcon.classList.replace("fa-times", "fa-bars");
+      }
+    });
 
-// Close when clicking on links
-document.querySelectorAll(".nav-mobile-link").forEach(link => {
-  link.addEventListener("click", function() {
-    mobileMenu.classList.remove("active");
-    mobileMenuBtn.setAttribute("aria-expanded", "false");
-    menuIcon.classList.replace("fa-times", "fa-bars");
-  });
-});
+    // Close when clicking on links
+    document.querySelectorAll(".nav-mobile-link").forEach(link => {
+      link.addEventListener("click", function() {
+        mobileMenu.classList.remove("active");
+        mobileMenuBtn.setAttribute("aria-expanded", "false");
+        menuIcon.classList.replace("fa-times", "fa-bars");
+      });
+    });
 
-// Close on escape key
-document.addEventListener("keydown", function(e) {
-  if (e.key === "Escape") {
-    mobileMenu.classList.remove("active");
-    mobileMenuBtn.setAttribute("aria-expanded", "false");
-    menuIcon.classList.replace("fa-times", "fa-bars");
-  }
-});
-        // ===== Smooth Scrolling =====
-        function smoothScroll(target) {
-          if (target) {
-            const targetPosition =
-              target.getBoundingClientRect().top + window.pageYOffset;
-            const startPosition = window.pageYOffset;
-            const distance = targetPosition - startPosition;
-            const duration = 800;
-            let startTime = null;
+    // Close on escape key
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") {
+        mobileMenu.classList.remove("active");
+        mobileMenuBtn.setAttribute("aria-expanded", "false");
+        menuIcon.classList.replace("fa-times", "fa-bars");
+      }
+    });
 
-            function animation(currentTime) {
-              if (!startTime) startTime = currentTime;
-              const timeElapsed = currentTime - startTime;
-              const run = ease(timeElapsed, startPosition, distance, duration);
-              window.scrollTo(0, run);
-              if (timeElapsed < duration) requestAnimationFrame(animation);
-            }
+    // ===== Smooth Scrolling =====
+    function smoothScroll(target) {
+      if (target) {
+        const targetPosition =
+          target.getBoundingClientRect().top + window.pageYOffset;
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        const duration = 800;
+        let startTime = null;
 
-            function ease(t, b, c, d) {
-              t /= d / 2;
-              if (t < 1) return (c / 2) * t * t + b;
-              t--;
-              return (-c / 2) * (t * (t - 2) - 1) + b;
-            }
-
-            requestAnimationFrame(animation);
-          }
+        function animation(currentTime) {
+          if (!startTime) startTime = currentTime;
+          const timeElapsed = currentTime - startTime;
+          const run = ease(timeElapsed, startPosition, distance, duration);
+          window.scrollTo(0, run);
+          if (timeElapsed < duration) requestAnimationFrame(animation);
         }
 
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-          anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute("href"));
-            smoothScroll(target);
-          });
+        function ease(t, b, c, d) {
+          t /= d / 2;
+          if (t < 1) return (c / 2) * t * t + b;
+          t--;
+          return (-c / 2) * (t * (t - 2) - 1) + b;
+        }
+
+        requestAnimationFrame(animation);
+      }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        smoothScroll(target);
+      });
+    });
+
+    // ===== Back to Top Button =====
+    const backToTopBtn = document.getElementById("backToTop");
+
+    function toggleBackToTop() {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add("visible");
+      } else {
+        backToTopBtn.classList.remove("visible");
+      }
+    }
+
+    if (backToTopBtn) {
+      window.addEventListener("scroll", toggleBackToTop);
+      backToTopBtn.addEventListener("click", () => {
+        smoothScroll(document.body);
+      });
+      toggleBackToTop(); // Initialize
+    }
+
+    // ===== Star Background =====
+    function createStars() {
+      const starsContainers = document.querySelectorAll(".stars");
+      starsContainers.forEach((container) => {
+        // Clear existing stars
+        container.innerHTML = "";
+
+        // Create optimized stars
+        const fragment = document.createDocumentFragment();
+        const starsCount = 100; // Reduced for performance
+
+        for (let i = 0; i < starsCount; i++) {
+          const star = document.createElement("span");
+          star.style.width = `${Math.random() * 2}px`;
+          star.style.height = star.style.width;
+          star.style.left = `${Math.random() * 100}%`;
+          star.style.top = `${Math.random() * 100}%`;
+          star.style.animationDuration = `${2 + Math.random() * 3}s`;
+          star.style.animationDelay = `${Math.random() * 5}s`;
+          fragment.appendChild(star);
+        }
+        container.appendChild(fragment);
+      });
+    }
+
+    // Initialize stars
+    createStars();
+
+    // ===== Scroll Animations with IntersectionObserver =====
+    function initScrollAnimations() {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -100px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
         });
+      }, observerOptions);
 
-        // ===== Back to Top Button =====
-        const backToTopBtn = document.getElementById("backToTop");
+      document
+        .querySelectorAll(".section-content, .project-card")
+        .forEach((el) => {
+          observer.observe(el);
+        });
+    }
 
-        function toggleBackToTop() {
-          if (window.scrollY > 300) {
-            backToTopBtn.classList.add("visible");
-          } else {
-            backToTopBtn.classList.remove("visible");
-          }
-        }
+    // Initialize scroll animations
+    initScrollAnimations();
 
-        if (backToTopBtn) {
-          window.addEventListener("scroll", toggleBackToTop);
-          backToTopBtn.addEventListener("click", () => {
-            smoothScroll(document.body);
-          });
-          toggleBackToTop(); // Initialize
-        }
+    // ===== Active Navigation Link =====
+    function updateActiveNavLink() {
+      const sections = document.querySelectorAll("section");
+      const navLinks = document.querySelectorAll(
+        ".nav-link, #mobileMenu a"
+      );
+      let current = "";
 
-        // ===== Star Background =====
-        function createStars() {
-          const starsContainers = document.querySelectorAll(".stars");
-          starsContainers.forEach((container) => {
-            // Clear existing stars
-            container.innerHTML = "";
-
-            // Create optimized stars
-            const fragment = document.createDocumentFragment();
-            const starsCount = 100; // Reduced for performance
-
-            for (let i = 0; i < starsCount; i++) {
-              const star = document.createElement("span");
-              star.style.width = `${Math.random() * 2}px`;
-              star.style.height = star.style.width;
-              star.style.left = `${Math.random() * 100}%`;
-              star.style.top = `${Math.random() * 100}%`;
-              star.style.animationDuration = `${2 + Math.random() * 3}s`;
-              star.style.animationDelay = `${Math.random() * 5}s`;
-              fragment.appendChild(star);
-            }
-            container.appendChild(fragment);
-          });
-        }
-
-        // Initialize stars
-        createStars();
-
-        // ===== Scroll Animations with IntersectionObserver =====
-        function initScrollAnimations() {
-          const observerOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -100px 0px",
-          };
-
-          const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-                observer.unobserve(entry.target);
-              }
-            });
-          }, observerOptions);
-
-          document
-            .querySelectorAll(".section-content, .project-card")
-            .forEach((el) => {
-              observer.observe(el);
-            });
-        }
-
-        // Initialize scroll animations
-        initScrollAnimations();
-
-        // ===== Active Navigation Link =====
-        function updateActiveNavLink() {
-          const sections = document.querySelectorAll("section");
-          const navLinks = document.querySelectorAll(
-            ".nav-link, #mobileMenu a"
-          );
-          let current = "";
-
-          sections.forEach((section) => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (window.scrollY >= sectionTop - sectionHeight / 3) {
-              current = section.getAttribute("id");
-            }
-          });
-
-          navLinks.forEach((link) => {
-            link.classList.remove("active", "current");
-            if (link.getAttribute("href").substring(1) === current) {
-              link.classList.add("active");
-              // Only add 'current' to sidebar links
-              if (link.classList.contains("nav-link")) {
-                link.classList.add("current");
-              }
-            }
-          });
-        }
-
-        // Throttled scroll handler
-        function throttle(func, limit) {
-          let lastFunc;
-          let lastRan;
-          return function () {
-            const context = this;
-            const args = arguments;
-            if (!lastRan) {
-              func.apply(context, args);
-              lastRan = Date.now();
-            } else {
-              clearTimeout(lastFunc);
-              lastFunc = setTimeout(function () {
-                if (Date.now() - lastRan >= limit) {
-                  func.apply(context, args);
-                  lastRan = Date.now();
-                }
-              }, limit - (Date.now() - lastRan));
-            }
-          };
-        }
-
-        // Replace your scroll listener with this:
-        window.addEventListener(
-          "scroll",
-          throttle(() => {
-            requestAnimationFrame(() => {
-              updateActiveNavLink();
-              toggleBackToTop();
-            });
-          }, 50),
-          { passive: true }
-        );
-
-        // Initialize
-        updateActiveNavLink();
-
-        // ===== Form Validation and Submission =====
-        const contactForm = document.getElementById("contactForm");
-        if (contactForm) {
-          const submitBtn = document.getElementById("submitBtn");
-          const btnText = document.getElementById("btnText");
-          const successMessage = document.getElementById("successMessage");
-
-          // Add shake animation to CSS
-          const style = document.createElement("style");
-          style.textContent = `
-          @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-            20%, 40%, 60%, 80% { transform: translateX(5px); }
-          }
-          .form-input.error {
-            border-color: #ff4444 !important;
-            box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.2) !important;
-            background-color: #ffeeee !important;
-            color: #ff4444 !important;
-          }
-          .form-error {
-            color: #ff4444 !important;
-          }
-        `;
-          document.head.appendChild(style);
-
-          function validateForm() {
-            let isValid = true;
-
-            // Validate name
-            const name = contactForm.elements["name"];
-            const nameError = document.getElementById("nameError");
-            if (!name.value.trim()) {
-              name.classList.add("error");
-              nameError.style.display = "block";
-              isValid = false;
-              name.style.animation = "shake 0.5s";
-              setTimeout(() => (name.style.animation = ""), 500);
-            } else {
-              name.classList.remove("error");
-              nameError.style.display = "none";
-            }
-
-            // Validate email
-            const email = contactForm.elements["email"];
-            const emailError = document.getElementById("emailError");
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (email.value.trim() === "@gmail.com") {
-              email.classList.add("error");
-              emailError.textContent =
-                "Email is incorrect. Please enter a valid email address.";
-              emailError.style.display = "block";
-              isValid = false;
-              email.style.animation = "shake 0.5s";
-              setTimeout(() => (email.style.animation = ""), 500);
-            } else if (!emailRegex.test(email.value)) {
-              email.classList.add("error");
-              emailError.textContent = "Please enter a valid email";
-              emailError.style.display = "block";
-              isValid = false;
-              email.style.animation = "shake 0.5s";
-              setTimeout(() => (email.style.animation = ""), 500);
-            } else {
-              email.classList.remove("error");
-              emailError.style.display = "none";
-            }
-
-            // Validate message
-            const message = contactForm.elements["message"];
-            const messageError = document.getElementById("messageError");
-            if (!message.value.trim()) {
-              message.classList.add("error");
-              messageError.style.display = "block";
-              isValid = false;
-              message.style.animation = "shake 0.5s";
-              setTimeout(() => (message.style.animation = ""), 500);
-            } else {
-              message.classList.remove("error");
-              messageError.style.display = "none";
-            }
-
-            return isValid;
-          }
-
-          contactForm.addEventListener("submit", async function (e) {
-            e.preventDefault();
-
-            if (!validateForm()) return;
-
-            submitBtn.classList.add("btn-loading");
-            btnText.style.visibility = "hidden";
-
-            try {
-              const response = await fetch(contactForm.action, {
-                method: "POST",
-                body: new FormData(contactForm),
-                headers: {
-                  Accept: "application/json",
-                },
-              });
-
-              const data = await response.json();
-
-              if (response.ok) {
-                // Success case
-                contactForm.reset();
-                successMessage.style.display = "block";
-                setTimeout(() => {
-                  successMessage.style.display = "none";
-                }, 5000);
-              } else {
-                // Handle Formspree-specific errors
-                if (data.error === "form_not_verified") {
-                  const emailUsed =
-                    contactForm.elements["email"].value || "your email";
-                  alert(
-                    `Please check ${emailUsed} for a verification link from Formspree!`
-                  );
-                } else {
-                  alert(
-                    data.error || "Submission error. Please try again later."
-                  );
-                }
-              }
-            } catch (error) {
-              console.error("Error:", error);
-              if (!error.message.includes("verification")) {
-                alert("Network error. Please check your connection.");
-              }
-            } finally {
-              submitBtn.classList.remove("btn-loading");
-              btnText.style.visibility = "visible";
-            }
-          });
-
-          // Real-time validation
-          contactForm.addEventListener("input", function (e) {
-            if (e.target.name === "name") {
-              const nameError = document.getElementById("nameError");
-              if (e.target.value.trim()) {
-                e.target.classList.remove("error");
-                nameError.style.display = "none";
-              }
-            }
-
-            if (e.target.name === "email") {
-              const emailError = document.getElementById("emailError");
-              const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-              const emailValue = e.target.value.trim();
-
-              if (emailValue === "@gmail.com") {
-                e.target.classList.add("error");
-                emailError.textContent =
-                  "Email is incorrect. Please enter a valid email address.";
-                emailError.style.display = "block";
-              } else if (emailValue && !emailRegex.test(emailValue)) {
-                e.target.classList.add("error");
-                emailError.textContent = "Please enter a valid email";
-                emailError.style.display = "block";
-              } else {
-                e.target.classList.remove("error");
-                emailError.style.display = "none";
-              }
-            }
-
-            if (e.target.name === "message") {
-              const messageError = document.getElementById("messageError");
-              if (e.target.value.trim()) {
-                e.target.classList.remove("error");
-                messageError.style.display = "none";
-              }
-            }
-          });
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= sectionTop - sectionHeight / 3) {
+          current = section.getAttribute("id");
         }
       });
-    </script>
+
+      navLinks.forEach((link) => {
+        link.classList.remove("active", "current");
+        if (link.getAttribute("href").substring(1) === current) {
+          link.classList.add("active");
+          // Only add 'current' to sidebar links
+          if (link.classList.contains("nav-link")) {
+            link.classList.add("current");
+          }
+        }
+      });
+    }
+
+    // Throttled scroll handler
+    function throttle(func, limit) {
+      let lastFunc;
+      let lastRan;
+      return function () {
+        const context = this;
+        const args = arguments;
+        if (!lastRan) {
+          func.apply(context, args);
+          lastRan = Date.now();
+        } else {
+          clearTimeout(lastFunc);
+          lastFunc = setTimeout(function () {
+            if (Date.now() - lastRan >= limit) {
+              func.apply(context, args);
+              lastRan = Date.now();
+            }
+          }, limit - (Date.now() - lastRan));
+        }
+      };
+    }
+
+    // Replace your scroll listener with this:
+    window.addEventListener(
+      "scroll",
+      throttle(() => {
+        requestAnimationFrame(() => {
+          updateActiveNavLink();
+          toggleBackToTop();
+        });
+      }, 50),
+      { passive: true }
+    );
+
+    // Initialize
+    updateActiveNavLink();
+
+    // ===== Form Validation and Submission =====
+    const contactForm = document.getElementById("contactForm");
+    if (contactForm) {
+      const submitBtn = document.getElementById("submitBtn");
+      const btnText = document.getElementById("btnText");
+      const successMessage = document.getElementById("successMessage");
+
+      // Add shake animation to CSS
+      const style = document.createElement("style");
+      style.textContent = `
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+        20%, 40%, 60%, 80% { transform: translateX(5px); }
+      }
+      .form-input.error {
+        border-color: #ff4444 !important;
+        box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.2) !important;
+        background-color: #ffeeee !important;
+        color: #ff4444 !important;
+      }
+      .form-error {
+        color: #ff4444 !important;
+      }
+    `;
+      document.head.appendChild(style);
+
+      // Enhanced input sanitization function
+      function sanitizeInput(text) {
+        const map = {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#x27;',
+          "/": '&#x2F;'
+        };
+        const reg = /[&<>"'/]/ig;
+        return text.replace(reg, (match) => (map[match]));
+      }
+
+      function validateForm() {
+        let isValid = true;
+
+        // Validate name
+        const name = contactForm.elements["name"];
+        const nameError = document.getElementById("nameError");
+        if (!name.value.trim()) {
+          name.classList.add("error");
+          nameError.style.display = "block";
+          isValid = false;
+          name.style.animation = "shake 0.5s";
+          setTimeout(() => (name.style.animation = ""), 500);
+        } else {
+          name.classList.remove("error");
+          nameError.style.display = "none";
+        }
+
+        // Validate email
+        const email = contactForm.elements["email"];
+        const emailError = document.getElementById("emailError");
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+        if (!emailRegex.test(email.value)) {
+          email.classList.add("error");
+          emailError.textContent = "Please enter a valid email";
+          emailError.style.display = "block";
+          isValid = false;
+          email.style.animation = "shake 0.5s";
+          setTimeout(() => (email.style.animation = ""), 500);
+        } else {
+          email.classList.remove("error");
+          emailError.style.display = "none";
+        }
+
+        // Validate message
+        const message = contactForm.elements["message"];
+        const messageError = document.getElementById("messageError");
+        if (!message.value.trim()) {
+          message.classList.add("error");
+          messageError.style.display = "block";
+          isValid = false;
+          message.style.animation = "shake 0.5s";
+          setTimeout(() => (message.style.animation = ""), 500);
+        } else {
+          message.classList.remove("error");
+          messageError.style.display = "none";
+        }
+
+        return isValid;
+      }
+
+      contactForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        if (!validateForm()) return;
+
+        submitBtn.classList.add("btn-loading");
+        btnText.style.visibility = "hidden";
+
+        try {
+          // Sanitize inputs before submission
+          const formData = new FormData(contactForm);
+          formData.set("name", sanitizeInput(formData.get("name")));
+          formData.set("message", sanitizeInput(formData.get("message")));
+
+          // Get CSRF token from meta tag (you'll need to add this to your HTML)
+          const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
+
+          const response = await fetch(contactForm.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+              'Accept': 'application/json',
+              'X-CSRF-Token': csrfToken
+            }
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            // Success case
+            contactForm.reset();
+            successMessage.style.display = "block";
+            setTimeout(() => {
+              successMessage.style.display = "none";
+            }, 5000);
+          } else {
+            // Handle Formspree-specific errors
+            if (data.error === "form_not_verified") {
+              const emailUsed =
+                contactForm.elements["email"].value || "your email";
+              alert(
+                `Please check ${emailUsed} for a verification link from Formspree!`
+              );
+            } else {
+              alert(
+                "Submission error. Please try again later."
+              );
+            }
+          }
+        } catch (error) {
+          console.error('Form submission error:', error.message);
+          alert("An error occurred. Please try again later.");
+        } finally {
+          submitBtn.classList.remove("btn-loading");
+          btnText.style.visibility = "visible";
+        }
+      });
+
+      // Real-time validation
+      contactForm.addEventListener("input", function (e) {
+        if (e.target.name === "name") {
+          const nameError = document.getElementById("nameError");
+          if (e.target.value.trim()) {
+            e.target.classList.remove("error");
+            nameError.style.display = "none";
+          }
+        }
+
+        if (e.target.name === "email") {
+          const emailError = document.getElementById("emailError");
+          const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+          const emailValue = e.target.value.trim();
+
+          if (emailValue && !emailRegex.test(emailValue)) {
+            e.target.classList.add("error");
+            emailError.textContent = "Please enter a valid email";
+            emailError.style.display = "block";
+          } else {
+            e.target.classList.remove("error");
+            emailError.style.display = "none";
+          }
+        }
+
+        if (e.target.name === "message") {
+          const messageError = document.getElementById("messageError");
+          if (e.target.value.trim()) {
+            e.target.classList.remove("error");
+            messageError.style.display = "none";
+          }
+        }
+      });
+    }
+  });
+</script>
   </body>
 </html>
