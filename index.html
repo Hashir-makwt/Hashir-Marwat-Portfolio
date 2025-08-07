@@ -1465,10 +1465,56 @@
       <button class="popup-btn" id="popupCloseBtn">Back to Website</button>
     </div>
   </div>
-
 <script>
 // Performance Optimized Scripts
 document.addEventListener("DOMContentLoaded", function () {
+  // ===== Video Handling for Different Devices =====
+  function handleVideoBackgrounds() {
+    const introVideo = document.querySelector('#intro .video-background');
+    const aboutVideo = document.querySelector('#about .video-background');
+    
+    if (window.innerWidth <= 768) { // Mobile devices
+      // Change intro video
+      introVideo.innerHTML = `
+        <source src="assets/intro.mp4" type="video/mp4">
+        <source src="assets/intro.webm" type="video/webm">
+        Your browser does not support the video tag.
+      `;
+      
+      // Change about video
+      aboutVideo.innerHTML = `
+        <source src="assets/about.mp4" type="video/mp4">
+        <source src="assets/about.webm" type="video/webm">
+        Your browser does not support the video tag.
+      `;
+      
+      // Reload videos
+      introVideo.load();
+      aboutVideo.load();
+    } else { // Desktop
+      // Set back to desktop versions
+      introVideo.innerHTML = `
+        <source src="assets/d.mp4" type="video/mp4">
+        <source src="assets/d.webm" type="video/webm">
+        Your browser does not support the video tag.
+      `;
+      
+      aboutVideo.innerHTML = `
+        <source src="assets/h.mp4" type="video/mp4">
+        <source src="assets/h.webm" type="video/webm">
+        Your browser does not support the video tag.
+      `;
+      
+      // Reload videos
+      introVideo.load();
+      aboutVideo.load();
+    }
+  }
+
+  // Run on load and when window resizes
+  handleVideoBackgrounds();
+  window.addEventListener('resize', handleVideoBackgrounds);
+
   // ===== Mobile Menu =====
   const mobileMenuBtn = document.getElementById("mobileMenuBtn");
   const mobileMenu = document.getElementById("mobileMenu");
@@ -1945,6 +1991,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
-</script>
+</script>>
   </body>
 </html>
