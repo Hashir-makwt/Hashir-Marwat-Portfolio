@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Under Construction</title>
-        <!-- Favicon -->
+    <!-- Favicon -->
     <link rel="icon" href="/assets/fav2.png" type="image/x-icon" />
     <link rel="shortcut icon" href="/assets/fav2.png" type="image/x-icon" />
     <!-- For modern browsers -->
@@ -16,8 +16,14 @@
     <!-- For Android/Chrome -->
     <link rel="manifest" href="site.webmanifest" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
         .video-background {
             position: fixed;
             top: 0;
@@ -26,13 +32,12 @@
             height: 100%;
             z-index: -1;
             overflow: hidden;
-            margin-bottom: 100px;
         }
         .video-background video {
-            min-width: 100%;
-            min-height: 100%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            opacity: 2; /* Slightly more visible video */
+            opacity: 0.8;
         }
         .overlay {
             position: fixed;
@@ -40,8 +45,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.85); /* Darker black overlay */
+            background-color: rgba(0, 0, 0, 0.85);
             z-index: -1;
+        }
+        .content-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
         .text-glow {
             animation: glow 2s ease-in-out infinite alternate;
@@ -56,59 +70,87 @@
         }
         .back-btn {
             transition: all 0.3s ease;
-            backdrop-filter: blur(5px); /* Frosted glass effect */
+            backdrop-filter: blur(5px);
         }
         .back-btn:hover {
             background-color: rgba(255, 255, 255, 0.15);
             transform: scale(1.05);
         }
+        
+        /* Mobile-specific adjustments */
+        @media (max-width: 640px) {
+            .video-background video {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                min-width: 100%;
+                min-height: 100%;
+                width: auto;
+                height: auto;
+            }
+            h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+            .back-btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
-<body class="h-screen flex flex-col items-center justify-center text-white">
+<body class="text-white">
     <!-- Video Background with Dark Overlay -->
     <div class="video-background">
         <video autoplay muted loop playsinline>
-            <source src="assets/d.mp4" type="video/mp4">
+            <source src="assets/h.mp4" type="video/mp4">
             Your browser does not support HTML5 video.
         </video>
     </div>
     <div class="overlay"></div>
 
     <!-- Content -->
-    <div class="text-center px-4">
-        <h1 class="text-4xl md:text-6xl font-bold uppercase tracking-widest mb-8 text-glow">
-            UNDER CONSTRUCTION
-        </h1>
-        <button onclick="goBackOrRedirect()" 
-        class="back-btn border border-white/30 py-3 px-8 rounded-full text-lg md:text-xl bg-white/5">
-    Back to Website
-</button>
-
+    <div class="content-container">
+        <div class="text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-bold uppercase tracking-widest mb-8 text-glow">
+                UNDER CONSTRUCTION
+            </h1>
+            <button onclick="goBackOrRedirect()" 
+            class="back-btn border border-white/30 py-3 px-8 rounded-full text-lg md:text-xl bg-white/5">
+                Back to Website
+            </button>
+        </div>
     </div>
 
     <script>
+        // Function to handle back button or redirect
+        function goBackOrRedirect() {
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.history.back();
+            } else {
+                window.location.href = "https://yourwebsite.com"; // Replace with your real homepage URL
+            }
+        }
+
         // Fallback if video doesn't load
         document.querySelector('video').addEventListener('error', function() {
             document.querySelector('.overlay').style.backgroundColor = '#000';
             document.querySelector('.video-background').innerHTML = '';
         });
-    </script>
-    <script>
-    function goBackOrRedirect() {
-        if (document.referrer && document.referrer !== window.location.href) {
-            window.history.back();
-        } else {
-            window.location.href = "https://yourwebsite.com"; // Replace with your real homepage URL
+
+        // Fix for mobile viewport height
+        function adjustViewportHeight() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
         }
-    }
 
-    // Fallback if video doesn't load
-    document.querySelector('video').addEventListener('error', function() {
-        document.querySelector('.overlay').style.backgroundColor = '#000';
-        document.querySelector('.video-background').innerHTML = '';
-    });
-</script>
+        // Initial adjustment
+        adjustViewportHeight();
 
+        // Adjust on resize
+        window.addEventListener('resize', adjustViewportHeight);
+        window.addEventListener('orientationchange', adjustViewportHeight);
+    </script>
 </body>
-
 </html>
