@@ -24,7 +24,7 @@
             padding: 0;
             overflow-x: hidden;
         }
-        .video-background {
+        .image-background {
             position: fixed;
             top: 0;
             left: 0;
@@ -33,11 +33,11 @@
             z-index: -1;
             overflow: hidden;
         }
-        .video-background video {
+        .image-background img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.8;
+            object-position: center;
         }
         .overlay {
             position: fixed;
@@ -79,7 +79,7 @@
         
         /* Mobile-specific adjustments */
         @media (max-width: 640px) {
-            .video-background video {
+            .image-background img {
                 position: absolute;
                 top: 50%;
                 left: 50%;
@@ -101,9 +101,9 @@
     </style>
 </head>
 <body class="text-white">
-    <!-- Video Background with Dark Overlay -->
-    <div class="video-background">
-        <img src="assets/galaxy.jpg" alt="">
+    <!-- Image Background with Dark Overlay -->
+    <div class="image-background">
+        <img src="assets/galaxy.jpg" alt="Background image">
     </div>
     <div class="overlay"></div>
 
@@ -130,10 +130,10 @@
             }
         }
 
-        // Fallback if video doesn't load
-        document.querySelector('video').addEventListener('error', function() {
+        // Fallback if image doesn't load
+        document.querySelector('.image-background img').addEventListener('error', function() {
             document.querySelector('.overlay').style.backgroundColor = '#000';
-            document.querySelector('.video-background').innerHTML = '';
+            document.querySelector('.image-background').innerHTML = '';
         });
 
         // Fix for mobile viewport height
