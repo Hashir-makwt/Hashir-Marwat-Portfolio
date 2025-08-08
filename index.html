@@ -72,10 +72,9 @@
     />
     <meta name="twitter:site" content="@hashirmarwat" />
 
-<link rel="icon" href="assets/favicon.png" type="image/png" />
-<link rel="shortcut icon" href="assets/favicon.png" type="image/png" />
-<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png" />
-
+    <link rel="icon" href="assets/favicon.png" type="image/png" />
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png" />
 
     <!-- Preloading for Performance -->
     <link
@@ -144,7 +143,7 @@
       /* Optimize rendering */
       html,
       body {
-        overflow-x: hidden;
+        /* overflow-x: hidden; */
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
         height: 100%; /* Fix for black space below footer */
@@ -719,90 +718,201 @@
           animation: none !important;
         }
       }
-       /* Add these new styles to your existing CSS */
-    .popup-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(5px);
-      z-index: 9999;
-      display: none;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
+      /* Add these new styles to your existing CSS */
+      .popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        z-index: 9999;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
 
-    .popup-overlay.active {
-      display: flex;
-      opacity: 1;
-    }
+      .popup-overlay.active {
+        display: flex;
+        opacity: 1;
+      }
 
-    .success-popup {
-      background: rgba(15, 23, 42, 0.95);
-      border: 2px solid #00f7ff;
-      border-radius: 8px;
-      padding: 30px;
-      max-width: 400px;
-      width: 90%;
-      text-align: center;
-      transform: scale(0.9);
-      opacity: 0;
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 0 30px rgba(0, 247, 255, 0.2);
-    }
-
-    .popup-overlay.active .success-popup {
-      transform: scale(1);
-      opacity: 1;
-    }
-
-    .success-popup i {
-      color: #00f7ff;
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-    }
-
-    .success-popup h3 {
-      color: white;
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-    }
-
-    .success-popup p {
-      color: #94a3b8;
-      margin-bottom: 25px;
-    }
-
-    .popup-btn {
-      background: linear-gradient(45deg, #0f7ea7, #00f7ff);
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: inline-block;
-      text-decoration: none;
-    }
-
-    .popup-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 247, 255, 0.3);
-    }
-
-    @media (max-width: 480px) {
       .success-popup {
-        padding: 20px;
+        background: rgba(15, 23, 42, 0.95);
+        border: 2px solid #00f7ff;
+        border-radius: 8px;
+        padding: 30px;
+        max-width: 400px;
+        width: 90%;
+        text-align: center;
+        transform: scale(0.9);
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 0 30px rgba(0, 247, 255, 0.2);
       }
+
+      .popup-overlay.active .success-popup {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      .success-popup i {
+        color: #00f7ff;
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+      }
+
       .success-popup h3 {
-        font-size: 1.3rem;
+        color: white;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
       }
-    }
+
+      .success-popup p {
+        color: #94a3b8;
+        margin-bottom: 25px;
+      }
+
+      .popup-btn {
+        background: linear-gradient(45deg, #0f7ea7, #00f7ff);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-block;
+        text-decoration: none;
+      }
+
+      .popup-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 247, 255, 0.3);
+      }
+
+      @media (max-width: 480px) {
+        .success-popup {
+          padding: 20px;
+        }
+        .success-popup h3 {
+          font-size: 1.3rem;
+        }
+      }
+
+      /* Updated Timeline Styles */
+      .timeline-container {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Desktop Styles */
+      .timeline-header {
+        text-align: left;
+        margin-bottom: 60px;
+        padding-left: 50px; /* Align with timeline items */
+      }
+
+      .timeline-line {
+        position: absolute;
+        left: 50%;
+        width: 4px;
+        background: var(--primary);
+        top: 100px; /* Start below header */
+        bottom: 0;
+        transform: translateX(-50%);
+        z-index: 1;
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 50px;
+        width: 45%;
+      }
+
+      /* Left-side items - Only change text alignment */
+      .timeline-item:nth-child(odd) {
+        margin-right: 50%;
+        text-align: left; /* Changed from right to left */
+        padding-right: 60px;
+      }
+
+      /* Right-side items */
+      .timeline-item:nth-child(even) {
+        margin-left: 50%;
+        text-align: left;
+        padding-left: 60px;
+      }
+
+      /* Content boxes */
+      .project-card {
+        background-color: var(--card-bg);
+        border-radius: 8px;
+        border: 1px solid var(--card-border);
+        padding: 20px;
+        width: 100%;
+        max-width: 400px;
+        display: inline-block;
+        position: relative;
+      }
+
+      /* Date styling */
+      .project-date {
+        color: var(--primary);
+        font-size: 0.9rem;
+        margin-top: 10px;
+        font-weight: 500;
+      }
+
+      /* Mobile Styles (unchanged) */
+      @media (max-width: 768px) {
+        .timeline-header {
+          text-align: center !important;
+          padding-left: 0 !important;
+          margin-bottom: 40px;
+        }
+
+        .timeline-line {
+          display: none;
+        }
+
+        .timeline-item {
+          width: 90% !important;
+          margin: 0 auto 40px !important;
+          text-align: left !important;
+          padding: 0 !important;
+        }
+
+        .project-card {
+          max-width: 100% !important;
+          text-align: left;
+        }
+
+        .project-links {
+          justify-content: flex-start !important;
+        }
+      }
+
+      /* Shared Styles */
+      .timeline-header h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        margin-left: -3rem;
+        color: white;
+      }
+
+      .timeline-header p {
+        color: var(--primary);
+        font-size: 1rem;
+        font-weight: 500;
+        margin-left: -3rem;
+      }
     </style>
   </head>
   <body>
@@ -937,136 +1047,153 @@
       </section>
 
       <!-- Work Section -->
-<!-- Work Section -->
-<section id="work" class="section">
-  <div class="stars"></div>
-  <div class="nebula"></div>
-  <div class="content-overlay">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-4xl font-bold mb-12 text-center section-title section-content">
-        Selected Work
-      </h2>
+      <section id="work" class="section">
+        <div class="stars"></div>
+        <div class="nebula"></div>
+        <div class="content-overlay">
+          <div class="timeline-container">
+            <div class="timeline-header section-content">
+              <h2>SELECTED WORK</h2>
+              <p>Premium Quality Projects</p>
+            </div>
 
-      <div class="space-y-20">
-        <!-- Project 1 -->
-        <article class="project-card">
-          <div class="flex flex-col md:flex-row">
-            <div class="md:w-1/2">
-              <img src="assets/company.png" alt="Company Website Screenshot" class="w-full h-auto object-contain max-h-80 mx-auto p-4" loading="lazy" decoding="async">
-            </div>
-            <div class="md:w-1/2 p-8">
-              <span class="text-[#00f7ff] font-semibold">Frontend Development</span>
-              <h3 class="text-2xl font-bold my-3">Company Website</h3>
-              <p class="text-gray-400 mb-4">
-                A professional website showcasing the company's services,
-                built with HTML, CSS, JS, and TailwindCSS.
-              </p>
-              <div class="project-links">
-                <!-- Live Demo Link -->
-                <a href="https://www.thepromptcontent.com/" class="project-link">
-                  <i class="fas fa-external-link-alt"></i> Live Demo
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
+            <div class="timeline-line"></div>
 
-        <!-- Project 2 -->
-        <article class="project-card">
-          <div class="flex flex-col md:flex-row-reverse">
-            <div class="md:w-1/2">
-              <img src="assets/portfolio.png" alt="Portfolio Showcase Screenshot" class="w-full h-auto object-contain max-h-80 mx-auto p-4" loading="lazy" decoding="async">
-            </div>
-            <div class="md:w-1/2 p-8">
-              <span class="text-[#00f7ff] font-semibold">Frontend Development</span>
-              <h3 class="text-2xl font-bold my-3">Portfolio Showcase</h3>
-              <p class="text-gray-400 mb-4">
-                A responsive portfolio template built with HTML, CSS and
-                JavaScript, featuring animated sections, dark/light mode
-                toggle, and project filtering capabilities.
-              </p>
-              <div class="project-links">
-                <!-- Live Demo Link -->
-                <a href="https://hashir-makwt.github.io/Hashir-Marwat-Portfolio/" class="project-link">
-                  <i class="fas fa-external-link-alt"></i> Live Demo
-                </a>
+            <!-- Project 1 -->
+            <article class="timeline-item">
+              <div class="project-card">
+                <img
+                  src="assets/company.png"
+                  alt="Company Website"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="text-[#00f7ff] font-semibold"
+                  >Frontend Development</span
+                >
+                <h3>Company Website</h3>
+                <p class="text-gray-400">
+                  Professional website built with HTML, CSS, JS, and
+                  TailwindCSS.
+                </p>
+                <div class="project-links flex">
+                  <a
+                    href="https://www.thepromptcontent.com/"
+                    class="project-link"
+                  >
+                    <i class="fas fa-external-link-alt"></i> Live Demo
+                  </a>
+                </div>
               </div>
-            </div>
-          </div>
-        </article>
+            </article>
 
-        <!-- Project 3 -->
-        <article class="project-card">
-          <div class="flex flex-col md:flex-row">
-            <div class="md:w-1/2">
-              <img src="assets/fast-food.png" alt="Fast Food Ordering Screenshot" class="w-full h-auto object-contain max-h-80 mx-auto p-4" loading="lazy" decoding="async">
-            </div>
-            <div class="md:w-1/2 p-8">
-              <span class="text-[#00f7ff] font-semibold">Frontend Development</span>
-              <h3 class="text-2xl font-bold my-3">Fast Food Ordering</h3>
-              <p class="text-gray-400 mb-4">
-                A fast food ordering platform built with HTML and CSS to
-                provide seamless ordering experience.
-              </p>
-              <div class="project-links">
-                <!-- Live Demo Link -->
-                <a href="https://hashir-makwt.github.io/Fast-Food/" class="project-link">
-                  <i class="fas fa-external-link-alt"></i> Live Demo
-                </a>
+            <!-- Project 2 -->
+            <article class="timeline-item">
+              <div class="project-card">
+                <img
+                  src="assets/portfolio.png"
+                  alt="Portfolio Showcase"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="text-[#00f7ff] font-semibold"
+                  >Frontend Development</span
+                >
+                <h3>Portfolio Showcase</h3>
+                <p class="text-gray-400">
+                  Responsive portfolio with animations and dark/light mode.
+                </p>
+                <div class="project-links flex">
+                  <a
+                    href="https://hashir-makwt.github.io/Hashir-Marwat-Portfolio/"
+                    class="project-link"
+                  >
+                    <i class="fas fa-external-link-alt"></i> Live Demo
+                  </a>
+                </div>
               </div>
-            </div>
-          </div>
-        </article>
+            </article>
 
-        <!-- Project 4 -->
-        <article class="project-card">
-          <div class="flex flex-col md:flex-row-reverse">
-            <div class="md:w-1/2">
-              <img src="assets/gym.png" alt="Gym Page Screenshot" class="w-full h-auto object-contain max-h-80 mx-auto p-4" loading="lazy" decoding="async">
-            </div>
-            <div class="md:w-1/2 p-8">
-              <span class="text-[#00f7ff] font-semibold">Frontend Development</span>
-              <h3 class="text-2xl font-bold my-3">Gym Page</h3>
-              <p class="text-gray-400 mb-4">
-                A gym page built with HTML and CSS, offering workout plans
-                and fitness tips to users.
-              </p>
-              <div class="project-links">
-                <!-- Live Demo Link -->
-                <a href="https://hashir-makwt.github.io/Gym-Page/" class="project-link">
-                  <i class="fas fa-external-link-alt"></i> Live Demo
-                </a>
+            <!-- Project 3 -->
+            <article class="timeline-item">
+              <div class="project-card">
+                <img
+                  src="assets/fast-food.png"
+                  alt="Fast Food Ordering"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="text-[#00f7ff] font-semibold"
+                  >Frontend Development</span
+                >
+                <h3>Fast Food Ordering</h3>
+                <p class="text-gray-400">
+                  Food ordering platform with HTML and CSS.
+                </p>
+                <div class="project-links flex">
+                  <a
+                    href="https://hashir-makwt.github.io/Fast-Food/"
+                    class="project-link"
+                  >
+                    <i class="fas fa-external-link-alt"></i> Live Demo
+                  </a>
+                </div>
               </div>
-            </div>
-          </div>
-        </article>
+            </article>
 
-        <!-- Project 5 -->
-        <article class="project-card">
-          <div class="flex flex-col md:flex-row">
-            <div class="md:w-1/2">
-              <img src="assets/react.png" alt="React Project Screenshot" class="w-full h-auto object-contain max-h-80 mx-auto p-4" loading="lazy" decoding="async">
-            </div>
-            <div class="md:w-1/2 p-8">
-              <span class="text-[#00f7ff] font-semibold">Full Stack Development</span>
-              <h3 class="text-2xl font-bold my-3">React Project</h3>
-              <p class="text-gray-400 mb-4">
-                A dynamic React application built using HTML, CSS, JS,
-                TailwindCSS, and React for enhanced interactivity.
-              </p>
-              <div class="project-links">
-                <!-- Live Demo Link -->
-                <a href="const.html" class="project-link">
-                  <i class="fas fa-external-link-alt"></i> Live Demo
-                </a>
+            <!-- Project 4 -->
+            <article class="timeline-item">
+              <div class="project-card">
+                <img
+                  src="assets/gym.png"
+                  alt="Gym Page"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="text-[#00f7ff] font-semibold"
+                  >Frontend Development</span
+                >
+                <h3>Gym Page</h3>
+                <p class="text-gray-400">
+                  Fitness page with workout plans and tips.
+                </p>
+                <div class="project-links flex">
+                  <a
+                    href="https://hashir-makwt.github.io/Gym-Page/"
+                    class="project-link"
+                  >
+                    <i class="fas fa-external-link-alt"></i> Live Demo
+                  </a>
+                </div>
               </div>
-            </div>
+            </article>
+
+            <!-- Project 5 -->
+            <article class="timeline-item">
+              <div class="project-card">
+                <img
+                  src="assets/react.png"
+                  alt="React Project"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="text-[#00f7ff] font-semibold"
+                  >Full Stack Development</span
+                >
+                <h3>React Project</h3>
+                <p class="text-gray-400">
+                  Dynamic application with React and TailwindCSS.
+                </p>
+                <div class="project-links flex">
+                  <a href="const.html" class="project-link">
+                    <i class="fas fa-external-link-alt"></i> Live Demo
+                  </a>
+                </div>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
+        </div>
+      </section>
 
       <!-- About Section -->
       <section id="about" class="section">
@@ -1119,52 +1246,67 @@
                   high-performing but also visually impactful.
                 </p>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
-  <div>
-    <h3 class="font-semibold mb-4 text-lg">Skills</h3>
-    <ul class="space-y-3">
-      <li class="flex items-center gap-3">
-        <span class="inline-block w-2.5 h-2.5 bg-[#00f7ff] rounded-full shrink-0"></span>
-        <span>UX/UI Design</span>
-      </li>
-      <li class="flex items-center gap-3">
-        <span class="inline-block w-2.5 h-2.5 bg-[#00f7ff] rounded-full shrink-0"></span>
-        <span>Frontend Development</span>
-      </li>
-      <li class="flex items-center gap-3">
-        <span class="inline-block w-2.5 h-2.5 bg-[#00f7ff] rounded-full shrink-0"></span>
-        <span>Prototyping</span>
-      </li>
-      <li class="flex items-center gap-3">
-        <span class="inline-block w-2.5 h-2.5 bg-[#00f7ff] rounded-full shrink-0"></span>
-        <span>User Research</span>
-      </li>
-    </ul>
-  </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8">
+                  <div>
+                    <h3 class="font-semibold mb-4 text-lg">Skills</h3>
+                    <ul class="space-y-3">
+                      <li class="flex items-center gap-3">
+                        <span
+                          class="inline-block w-2.5 h-2.5 bg-[#00f7ff] rounded-full shrink-0"
+                        ></span>
+                        <span>UX/UI Design</span>
+                      </li>
+                      <li class="flex items-center gap-3">
+                        <span
+                          class="inline-block w-2.5 h-2.5 bg-[#00f7ff] rounded-full shrink-0"
+                        ></span>
+                        <span>Frontend Development</span>
+                      </li>
+                      <li class="flex items-center gap-3">
+                        <span
+                          class="inline-block w-2.5 h-2.5 bg-[#00f7ff] rounded-full shrink-0"
+                        ></span>
+                        <span>Prototyping</span>
+                      </li>
+                      <li class="flex items-center gap-3">
+                        <span
+                          class="inline-block w-2.5 h-2.5 bg-[#00f7ff] rounded-full shrink-0"
+                        ></span>
+                        <span>User Research</span>
+                      </li>
+                    </ul>
+                  </div>
 
-  <div>
-    <h3 class="font-semibold mb-4 text-lg">Tools</h3>
-    <ul class="space-y-3">
-      <li class="flex items-center gap-3">
-        <span class="inline-block w-2.5 h-2.5 bg-[#00f7ff] rounded-full shrink-0"></span>
-        <span>Figma</span>
-      </li>
-      <li class="flex items-center gap-3">
-        <span class="inline-block w-2.5 h-2.5 bg-[#00f7ff] rounded-full shrink-0"></span>
-        <span>Adobe Creative Suite</span>
-      </li>
-      <li class="flex items-center gap-3">
-        <span class="inline-block w-2.5 h-2.5 bg-[#00f7ff] rounded-full shrink-0"></span>
-        <span>HTML/CSS/JS</span>
-      </li>
-      <li class="flex items-center gap-3">
-        <span class="inline-block w-2.5 h-2.5 bg-[#00f7ff] rounded-full shrink-0"></span>
-        <span>React</span>
-      </li>
-    </ul>
-  </div>
-</div>
-
+                  <div>
+                    <h3 class="font-semibold mb-4 text-lg">Tools</h3>
+                    <ul class="space-y-3">
+                      <li class="flex items-center gap-3">
+                        <span
+                          class="inline-block w-2.5 h-2.5 bg-[#00f7ff] rounded-full shrink-0"
+                        ></span>
+                        <span>Figma</span>
+                      </li>
+                      <li class="flex items-center gap-3">
+                        <span
+                          class="inline-block w-2.5 h-2.5 bg-[#00f7ff] rounded-full shrink-0"
+                        ></span>
+                        <span>Adobe Creative Suite</span>
+                      </li>
+                      <li class="flex items-center gap-3">
+                        <span
+                          class="inline-block w-2.5 h-2.5 bg-[#00f7ff] rounded-full shrink-0"
+                        ></span>
+                        <span>HTML/CSS/JS</span>
+                      </li>
+                      <li class="flex items-center gap-3">
+                        <span
+                          class="inline-block w-2.5 h-2.5 bg-[#00f7ff] rounded-full shrink-0"
+                        ></span>
+                        <span>React</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -1263,10 +1405,15 @@
                     <a
                       href="https://www.instagram.com/hashir_makwt/"
                       class="social-link text-xl"
-                      aria-label="Instagram" target="_blank"
+                      aria-label="Instagram"
+                      target="_blank"
                       ><i class="fab fa-instagram"></i
                     ></a>
-                    <a href="https://github.com/Hashir-makwt" class="social-link text-xl" aria-label="GitHub" target="_blank"
+                    <a
+                      href="https://github.com/Hashir-makwt"
+                      class="social-link text-xl"
+                      aria-label="GitHub"
+                      target="_blank"
                       ><i class="fab fa-github"></i
                     ></a>
                   </div>
@@ -1368,328 +1515,332 @@
         <p>© 2025 HASHIR MARWAT. All rights reserved.</p>
       </footer>
     </main>
-      <div class="popup-overlay" id="popupOverlay">
-    <div class="success-popup">
-      <i class="fas fa-check-circle"></i>
-      <h3>Thank You!</h3>
-      <p>Your message has been successfully sent. I'll get back to you soon.</p>
-      <button class="popup-btn" id="popupCloseBtn">Back to Website</button>
+    <div class="popup-overlay" id="popupOverlay">
+      <div class="success-popup">
+        <i class="fas fa-check-circle"></i>
+        <h3>Thank You!</h3>
+        <p>
+          Your message has been successfully sent. I'll get back to you soon.
+        </p>
+        <button class="popup-btn" id="popupCloseBtn">Back to Website</button>
+      </div>
     </div>
-  </div>
-<script>
-// Performance Optimized Scripts
-document.addEventListener("DOMContentLoaded", function () {
-  // ===== Video Handling for Different Devices =====
-  function handleVideoBackgrounds() {
-    const introVideo = document.querySelector('#intro .video-background');
-    const aboutVideo = document.querySelector('#about .video-background');
-    
-    if (window.innerWidth <= 768) { // Mobile devices
-      // Change intro video
-      introVideo.innerHTML = `
+    <script>
+      // Performance Optimized Scripts
+      document.addEventListener("DOMContentLoaded", function () {
+        // ===== Video Handling for Different Devices =====
+        function handleVideoBackgrounds() {
+          const introVideo = document.querySelector("#intro .video-background");
+          const aboutVideo = document.querySelector("#about .video-background");
+
+          if (window.innerWidth <= 768) {
+            // Mobile devices
+            // Change intro video
+            introVideo.innerHTML = `
         <source src="assets/d.mp4" type="video/mp4">
         <source src="assets/d.webm" type="video/webm">
         Your browser does not support the video tag.
       `;
-      
-      // Change about video
-      aboutVideo.innerHTML = `
+
+            // Change about video
+            aboutVideo.innerHTML = `
         <source src="assets/h.mp4" type="video/mp4">
         <source src="assets/h.webm" type="video/webm">
         Your browser does not support the video tag.
       `;
-      
-      // Reload videos
-      introVideo.load();
-      aboutVideo.load();
-    } else { // Desktop
-      // Set back to desktop versions
-      introVideo.innerHTML = `
+
+            // Reload videos
+            introVideo.load();
+            aboutVideo.load();
+          } else {
+            // Desktop
+            // Set back to desktop versions
+            introVideo.innerHTML = `
         <source src="assets/d.mp4" type="video/mp4">
         <source src="assets/d.webm" type="video/webm">
         Your browser does not support the video tag.
       `;
-      
-      aboutVideo.innerHTML = `
+
+            aboutVideo.innerHTML = `
         <source src="assets/h.mp4" type="video/mp4">
         <source src="assets/h.webm" type="video/webm">
         Your browser does not support the video tag.
       `;
-      
-      // Reload videos
-      introVideo.load();
-      aboutVideo.load();
-    }
-  }
 
-  // Preload videos for better performance
-  function preloadVideos() {
-    const videoUrls = [
-      'assets/d.mp4',
-      'assets/d.webm',
-      'assets/h.mp4',
-      'assets/h.webm'
-    ];
-    
-    videoUrls.forEach(url => {
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      link.as = 'video';
-      link.href = url;
-      document.head.appendChild(link);
-    });
-  }
-
-  // Run on load and when window resizes
-  preloadVideos();
-  handleVideoBackgrounds();
-  window.addEventListener('resize', handleVideoBackgrounds);
-
-  // ===== Mobile Menu =====
-  const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-  const mobileMenu = document.getElementById("mobileMenu");
-  const menuIcon = document.getElementById("menuIcon");
-
-  // Simple toggle function
-  function toggleMenu() {
-    const isOpen = mobileMenu.classList.contains("active");
-
-    if (isOpen) {
-      // Close menu
-      mobileMenu.classList.remove("active");
-      mobileMenuBtn.setAttribute("aria-expanded", "false");
-      menuIcon.classList.replace("fa-times", "fa-bars");
-    } else {
-      // Open menu
-      mobileMenu.classList.add("active");
-      mobileMenuBtn.setAttribute("aria-expanded", "true");
-      menuIcon.classList.replace("fa-bars", "fa-times");
-    }
-  }
-
-  // Click event
-  mobileMenuBtn.addEventListener("click", function (e) {
-    e.stopPropagation(); // Prevent event from bubbling up
-    toggleMenu();
-  });
-
-  // Close when clicking outside
-  document.addEventListener("click", function (e) {
-    if (!mobileMenu.contains(e.target) && e.target !== mobileMenuBtn) {
-      mobileMenu.classList.remove("active");
-      mobileMenuBtn.setAttribute("aria-expanded", "false");
-      menuIcon.classList.replace("fa-times", "fa-bars");
-    }
-  });
-
-  // Close when clicking on links
-  document.querySelectorAll(".nav-mobile-link").forEach((link) => {
-    link.addEventListener("click", function () {
-      mobileMenu.classList.remove("active");
-      mobileMenuBtn.setAttribute("aria-expanded", "false");
-      menuIcon.classList.replace("fa-times", "fa-bars");
-    });
-  });
-
-  // Close on escape key
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") {
-      mobileMenu.classList.remove("active");
-      mobileMenuBtn.setAttribute("aria-expanded", "false");
-      menuIcon.classList.replace("fa-times", "fa-bars");
-    }
-  });
-  
-  // ===== Smooth Scrolling =====
-  function smoothScroll(target) {
-    if (target) {
-      const targetPosition =
-        target.getBoundingClientRect().top + window.pageYOffset;
-      const startPosition = window.pageYOffset;
-      const distance = targetPosition - startPosition;
-      const duration = 800;
-      let startTime = null;
-
-      function animation(currentTime) {
-        if (!startTime) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const run = ease(timeElapsed, startPosition, distance, duration);
-        window.scrollTo(0, run);
-        if (timeElapsed < duration) requestAnimationFrame(animation);
-      }
-
-      function ease(t, b, c, d) {
-        t /= d / 2;
-        if (t < 1) return (c / 2) * t * t + b;
-        t--;
-        return (-c / 2) * (t * (t - 2) - 1) + b;
-      }
-
-      requestAnimationFrame(animation);
-    }
-  }
-
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
-      smoothScroll(target);
-    });
-  });
-
-  // ===== Back to Top Button =====
-  const backToTopBtn = document.getElementById("backToTop");
-
-  function toggleBackToTop() {
-    if (window.scrollY > 300) {
-      backToTopBtn.classList.add("visible");
-    } else {
-      backToTopBtn.classList.remove("visible");
-    }
-  }
-
-  if (backToTopBtn) {
-    window.addEventListener("scroll", toggleBackToTop);
-    backToTopBtn.addEventListener("click", () => {
-      smoothScroll(document.body);
-    });
-    toggleBackToTop(); // Initialize
-  }
-
-  // ===== Star Background =====
-  function createStars() {
-    const starsContainers = document.querySelectorAll(".stars");
-    starsContainers.forEach((container) => {
-      // Clear existing stars
-      container.innerHTML = "";
-
-      // Create optimized stars
-      const fragment = document.createDocumentFragment();
-      const starsCount = 100; // Reduced for performance
-
-      for (let i = 0; i < starsCount; i++) {
-        const star = document.createElement("span");
-        star.style.width = `${Math.random() * 2}px`;
-        star.style.height = star.style.width;
-        star.style.left = `${Math.random() * 100}%`;
-        star.style.top = `${Math.random() * 100}%`;
-        star.style.animationDuration = `${2 + Math.random() * 3}s`;
-        star.style.animationDelay = `${Math.random() * 5}s`;
-        fragment.appendChild(star);
-      }
-      container.appendChild(fragment);
-    });
-  }
-
-  // Initialize stars
-  createStars();
-
-  // ===== Scroll Animations with IntersectionObserver =====
-  function initScrollAnimations() {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -100px 0px",
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    document
-      .querySelectorAll(".section-content, .project-card")
-      .forEach((el) => {
-        observer.observe(el);
-      });
-  }
-
-  // Initialize scroll animations
-  initScrollAnimations();
-
-  // ===== Active Navigation Link =====
-  function updateActiveNavLink() {
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(
-      ".nav-link, #mobileMenu a"
-    );
-    let current = "";
-
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-      if (window.scrollY >= sectionTop - sectionHeight / 3) {
-        current = section.getAttribute("id");
-      }
-    });
-
-    navLinks.forEach((link) => {
-      link.classList.remove("active", "current");
-      if (link.getAttribute("href").substring(1) === current) {
-        link.classList.add("active");
-        // Only add 'current' to sidebar links
-        if (link.classList.contains("nav-link")) {
-          link.classList.add("current");
-        }
-      }
-    });
-  }
-
-  // Throttled scroll handler
-  function throttle(func, limit) {
-    let lastFunc;
-    let lastRan;
-    return function () {
-      const context = this;
-      const args = arguments;
-      if (!lastRan) {
-        func.apply(context, args);
-        lastRan = Date.now();
-      } else {
-        clearTimeout(lastFunc);
-        lastFunc = setTimeout(function () {
-          if (Date.now() - lastRan >= limit) {
-            func.apply(context, args);
-            lastRan = Date.now();
+            // Reload videos
+            introVideo.load();
+            aboutVideo.load();
           }
-        }, limit - (Date.now() - lastRan));
-      }
-    };
-  }
+        }
 
-  // Replace your scroll listener with this:
-  window.addEventListener(
-    "scroll",
-    throttle(() => {
-      requestAnimationFrame(() => {
+        // Preload videos for better performance
+        function preloadVideos() {
+          const videoUrls = [
+            "assets/d.mp4",
+            "assets/d.webm",
+            "assets/h.mp4",
+            "assets/h.webm",
+          ];
+
+          videoUrls.forEach((url) => {
+            const link = document.createElement("link");
+            link.rel = "preload";
+            link.as = "video";
+            link.href = url;
+            document.head.appendChild(link);
+          });
+        }
+
+        // Run on load and when window resizes
+        preloadVideos();
+        handleVideoBackgrounds();
+        window.addEventListener("resize", handleVideoBackgrounds);
+
+        // ===== Mobile Menu =====
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const menuIcon = document.getElementById("menuIcon");
+
+        // Simple toggle function
+        function toggleMenu() {
+          const isOpen = mobileMenu.classList.contains("active");
+
+          if (isOpen) {
+            // Close menu
+            mobileMenu.classList.remove("active");
+            mobileMenuBtn.setAttribute("aria-expanded", "false");
+            menuIcon.classList.replace("fa-times", "fa-bars");
+          } else {
+            // Open menu
+            mobileMenu.classList.add("active");
+            mobileMenuBtn.setAttribute("aria-expanded", "true");
+            menuIcon.classList.replace("fa-bars", "fa-times");
+          }
+        }
+
+        // Click event
+        mobileMenuBtn.addEventListener("click", function (e) {
+          e.stopPropagation(); // Prevent event from bubbling up
+          toggleMenu();
+        });
+
+        // Close when clicking outside
+        document.addEventListener("click", function (e) {
+          if (!mobileMenu.contains(e.target) && e.target !== mobileMenuBtn) {
+            mobileMenu.classList.remove("active");
+            mobileMenuBtn.setAttribute("aria-expanded", "false");
+            menuIcon.classList.replace("fa-times", "fa-bars");
+          }
+        });
+
+        // Close when clicking on links
+        document.querySelectorAll(".nav-mobile-link").forEach((link) => {
+          link.addEventListener("click", function () {
+            mobileMenu.classList.remove("active");
+            mobileMenuBtn.setAttribute("aria-expanded", "false");
+            menuIcon.classList.replace("fa-times", "fa-bars");
+          });
+        });
+
+        // Close on escape key
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            mobileMenu.classList.remove("active");
+            mobileMenuBtn.setAttribute("aria-expanded", "false");
+            menuIcon.classList.replace("fa-times", "fa-bars");
+          }
+        });
+
+        // ===== Smooth Scrolling =====
+        function smoothScroll(target) {
+          if (target) {
+            const targetPosition =
+              target.getBoundingClientRect().top + window.pageYOffset;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            const duration = 800;
+            let startTime = null;
+
+            function animation(currentTime) {
+              if (!startTime) startTime = currentTime;
+              const timeElapsed = currentTime - startTime;
+              const run = ease(timeElapsed, startPosition, distance, duration);
+              window.scrollTo(0, run);
+              if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+
+            function ease(t, b, c, d) {
+              t /= d / 2;
+              if (t < 1) return (c / 2) * t * t + b;
+              t--;
+              return (-c / 2) * (t * (t - 2) - 1) + b;
+            }
+
+            requestAnimationFrame(animation);
+          }
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            smoothScroll(target);
+          });
+        });
+
+        // ===== Back to Top Button =====
+        const backToTopBtn = document.getElementById("backToTop");
+
+        function toggleBackToTop() {
+          if (window.scrollY > 300) {
+            backToTopBtn.classList.add("visible");
+          } else {
+            backToTopBtn.classList.remove("visible");
+          }
+        }
+
+        if (backToTopBtn) {
+          window.addEventListener("scroll", toggleBackToTop);
+          backToTopBtn.addEventListener("click", () => {
+            smoothScroll(document.body);
+          });
+          toggleBackToTop(); // Initialize
+        }
+
+        // ===== Star Background =====
+        function createStars() {
+          const starsContainers = document.querySelectorAll(".stars");
+          starsContainers.forEach((container) => {
+            // Clear existing stars
+            container.innerHTML = "";
+
+            // Create optimized stars
+            const fragment = document.createDocumentFragment();
+            const starsCount = 100; // Reduced for performance
+
+            for (let i = 0; i < starsCount; i++) {
+              const star = document.createElement("span");
+              star.style.width = `${Math.random() * 2}px`;
+              star.style.height = star.style.width;
+              star.style.left = `${Math.random() * 100}%`;
+              star.style.top = `${Math.random() * 100}%`;
+              star.style.animationDuration = `${2 + Math.random() * 3}s`;
+              star.style.animationDelay = `${Math.random() * 5}s`;
+              fragment.appendChild(star);
+            }
+            container.appendChild(fragment);
+          });
+        }
+
+        // Initialize stars
+        createStars();
+
+        // ===== Scroll Animations with IntersectionObserver =====
+        function initScrollAnimations() {
+          const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -100px 0px",
+          };
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          }, observerOptions);
+
+          document
+            .querySelectorAll(".section-content, .project-card")
+            .forEach((el) => {
+              observer.observe(el);
+            });
+        }
+
+        // Initialize scroll animations
+        initScrollAnimations();
+
+        // ===== Active Navigation Link =====
+        function updateActiveNavLink() {
+          const sections = document.querySelectorAll("section");
+          const navLinks = document.querySelectorAll(
+            ".nav-link, #mobileMenu a"
+          );
+          let current = "";
+
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= sectionTop - sectionHeight / 3) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          navLinks.forEach((link) => {
+            link.classList.remove("active", "current");
+            if (link.getAttribute("href").substring(1) === current) {
+              link.classList.add("active");
+              // Only add 'current' to sidebar links
+              if (link.classList.contains("nav-link")) {
+                link.classList.add("current");
+              }
+            }
+          });
+        }
+
+        // Throttled scroll handler
+        function throttle(func, limit) {
+          let lastFunc;
+          let lastRan;
+          return function () {
+            const context = this;
+            const args = arguments;
+            if (!lastRan) {
+              func.apply(context, args);
+              lastRan = Date.now();
+            } else {
+              clearTimeout(lastFunc);
+              lastFunc = setTimeout(function () {
+                if (Date.now() - lastRan >= limit) {
+                  func.apply(context, args);
+                  lastRan = Date.now();
+                }
+              }, limit - (Date.now() - lastRan));
+            }
+          };
+        }
+
+        // Replace your scroll listener with this:
+        window.addEventListener(
+          "scroll",
+          throttle(() => {
+            requestAnimationFrame(() => {
+              updateActiveNavLink();
+              toggleBackToTop();
+            });
+          }, 50),
+          { passive: true }
+        );
+
+        // Initialize
         updateActiveNavLink();
-        toggleBackToTop();
-      });
-    }, 50),
-    { passive: true }
-  );
 
-  // Initialize
-  updateActiveNavLink();
+        // ===== Form Validation and Submission =====
+        const contactForm = document.getElementById("contactForm");
+        if (contactForm) {
+          const submitBtn = document.getElementById("submitBtn");
+          const btnText = document.getElementById("btnText");
+          const formErrorContainer = document.createElement("div");
+          formErrorContainer.className = "form-error";
+          formErrorContainer.id = "formError";
+          formErrorContainer.style.display = "none";
+          formErrorContainer.style.marginTop = "20px";
+          contactForm.appendChild(formErrorContainer);
 
-  // ===== Form Validation and Submission =====
-  const contactForm = document.getElementById("contactForm");
-  if (contactForm) {
-    const submitBtn = document.getElementById("submitBtn");
-    const btnText = document.getElementById("btnText");
-    const formErrorContainer = document.createElement("div");
-    formErrorContainer.className = "form-error";
-    formErrorContainer.id = "formError";
-    formErrorContainer.style.display = "none";
-    formErrorContainer.style.marginTop = "20px";
-    contactForm.appendChild(formErrorContainer);
-
-    // Add shake animation to CSS
-    const style = document.createElement("style");
-    style.textContent = `
+          // Add shake animation to CSS
+          const style = document.createElement("style");
+          style.textContent = `
     @keyframes shake {
       0%, 100% { transform: translateX(0); }
       10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
@@ -1779,148 +1930,157 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
     `;
-    document.head.appendChild(style);
+          document.head.appendChild(style);
 
-    // Real-time validation functions
-    function validateName() {
-      const name = contactForm.elements["name"];
-      const nameError = document.getElementById("nameError");
-      if (!name.value.trim()) {
-        name.classList.add("error");
-        nameError.style.display = "block";
-        return false;
-      } else {
-        name.classList.remove("error");
-        nameError.style.display = "none";
-        return true;
-      }
-    }
-
-    function validateEmail() {
-      const email = contactForm.elements["email"];
-      const emailError = document.getElementById("emailError");
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      
-      if (!emailRegex.test(email.value)) {
-        email.classList.add("error");
-        emailError.textContent = "Please enter a valid email address";
-        emailError.style.display = "block";
-        return false;
-      } else {
-        email.classList.remove("error");
-        emailError.style.display = "none";
-        return true;
-      }
-    }
-
-    function validateMessage() {
-      const message = contactForm.elements["message"];
-      const messageError = document.getElementById("messageError");
-      if (!message.value.trim()) {
-        message.classList.add("error");
-        messageError.style.display = "block";
-        return false;
-      } else {
-        message.classList.remove("error");
-        messageError.style.display = "none";
-        return true;
-      }
-    }
-
-    function validateForm() {
-      const isNameValid = validateName();
-      const isEmailValid = validateEmail();
-      const isMessageValid = validateMessage();
-      
-      return isNameValid && isEmailValid && isMessageValid;
-    }
-
-    // Show success popup function
-    function showSuccessPopup() {
-      const popupOverlay = document.getElementById('popupOverlay');
-      const popupCloseBtn = document.getElementById('popupCloseBtn');
-      
-      // Store current scroll position
-      const scrollPosition = window.scrollY;
-      
-      // Show popup
-      popupOverlay.classList.add('active');
-      
-      // Disable scrolling
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollPosition}px`;
-      document.body.style.width = '100%';
-      
-      // Close button handler
-      popupCloseBtn.addEventListener('click', function() {
-        popupOverlay.classList.remove('active');
-        
-        // Re-enable scrolling
-        document.body.style.overflow = '';
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        window.scrollTo(0, scrollPosition);
-      });
-    }
-
-    // Real-time validation event listeners
-    contactForm.elements["name"].addEventListener("input", validateName);
-    contactForm.elements["email"].addEventListener("input", validateEmail);
-    contactForm.elements["message"].addEventListener("input", validateMessage);
-
-    contactForm.addEventListener("submit", async function (e) {
-      e.preventDefault();
-
-      if (!validateForm()) {
-        // Add shake effect to invalid fields
-        const invalidFields = contactForm.querySelectorAll(".error");
-        invalidFields.forEach(field => {
-          field.style.animation = "shake 0.5s";
-          setTimeout(() => (field.style.animation = ""), 500);
-        });
-        return;
-      }
-
-      submitBtn.classList.add("btn-loading");
-      btnText.style.visibility = "hidden";
-      formErrorContainer.style.display = "none";
-
-      try {
-        const response = await fetch(contactForm.action, {
-          method: "POST",
-          body: new FormData(contactForm),
-          headers: {
-            'Accept': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest'
+          // Real-time validation functions
+          function validateName() {
+            const name = contactForm.elements["name"];
+            const nameError = document.getElementById("nameError");
+            if (!name.value.trim()) {
+              name.classList.add("error");
+              nameError.style.display = "block";
+              return false;
+            } else {
+              name.classList.remove("error");
+              nameError.style.display = "none";
+              return true;
+            }
           }
-        });
 
-        if (response.ok) {
-          contactForm.reset();
-          showSuccessPopup();
-        } else {
-          const data = await response.json();
-          // Handle Formspree-specific errors
-          if (data.error === "form_not_verified") {
-            formErrorContainer.textContent = "Please check your email for a verification link from Formspree and verify your email before submitting the form.";
-          } else {
-            formErrorContainer.textContent = data.error || "Submission error. Please try again later.";
+          function validateEmail() {
+            const email = contactForm.elements["email"];
+            const emailError = document.getElementById("emailError");
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(email.value)) {
+              email.classList.add("error");
+              emailError.textContent = "Please enter a valid email address";
+              emailError.style.display = "block";
+              return false;
+            } else {
+              email.classList.remove("error");
+              emailError.style.display = "none";
+              return true;
+            }
           }
-          formErrorContainer.style.display = "block";
+
+          function validateMessage() {
+            const message = contactForm.elements["message"];
+            const messageError = document.getElementById("messageError");
+            if (!message.value.trim()) {
+              message.classList.add("error");
+              messageError.style.display = "block";
+              return false;
+            } else {
+              message.classList.remove("error");
+              messageError.style.display = "none";
+              return true;
+            }
+          }
+
+          function validateForm() {
+            const isNameValid = validateName();
+            const isEmailValid = validateEmail();
+            const isMessageValid = validateMessage();
+
+            return isNameValid && isEmailValid && isMessageValid;
+          }
+
+          // Show success popup function
+          function showSuccessPopup() {
+            const popupOverlay = document.getElementById("popupOverlay");
+            const popupCloseBtn = document.getElementById("popupCloseBtn");
+
+            // Store current scroll position
+            const scrollPosition = window.scrollY;
+
+            // Show popup
+            popupOverlay.classList.add("active");
+
+            // Disable scrolling
+            document.body.style.overflow = "hidden";
+            document.body.style.position = "fixed";
+            document.body.style.top = `-${scrollPosition}px`;
+            document.body.style.width = "100%";
+
+            // Close button handler
+            popupCloseBtn.addEventListener("click", function () {
+              popupOverlay.classList.remove("active");
+
+              // Re-enable scrolling
+              document.body.style.overflow = "";
+              document.body.style.position = "";
+              document.body.style.top = "";
+              document.body.style.width = "";
+              window.scrollTo(0, scrollPosition);
+            });
+          }
+
+          // Real-time validation event listeners
+          contactForm.elements["name"].addEventListener("input", validateName);
+          contactForm.elements["email"].addEventListener(
+            "input",
+            validateEmail
+          );
+          contactForm.elements["message"].addEventListener(
+            "input",
+            validateMessage
+          );
+
+          contactForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            if (!validateForm()) {
+              // Add shake effect to invalid fields
+              const invalidFields = contactForm.querySelectorAll(".error");
+              invalidFields.forEach((field) => {
+                field.style.animation = "shake 0.5s";
+                setTimeout(() => (field.style.animation = ""), 500);
+              });
+              return;
+            }
+
+            submitBtn.classList.add("btn-loading");
+            btnText.style.visibility = "hidden";
+            formErrorContainer.style.display = "none";
+
+            try {
+              const response = await fetch(contactForm.action, {
+                method: "POST",
+                body: new FormData(contactForm),
+                headers: {
+                  Accept: "application/json",
+                  "X-Requested-With": "XMLHttpRequest",
+                },
+              });
+
+              if (response.ok) {
+                contactForm.reset();
+                showSuccessPopup();
+              } else {
+                const data = await response.json();
+                // Handle Formspree-specific errors
+                if (data.error === "form_not_verified") {
+                  formErrorContainer.textContent =
+                    "Please check your email for a verification link from Formspree and verify your email before submitting the form.";
+                } else {
+                  formErrorContainer.textContent =
+                    data.error || "Submission error. Please try again later.";
+                }
+                formErrorContainer.style.display = "block";
+              }
+            } catch (error) {
+              console.error("Error:", error);
+              formErrorContainer.textContent =
+                "Network error. Please check your connection and try again.";
+              formErrorContainer.style.display = "block";
+            } finally {
+              submitBtn.classList.remove("btn-loading");
+              btnText.style.visibility = "visible";
+            }
+          });
         }
-      } catch (error) {
-        console.error("Error:", error);
-        formErrorContainer.textContent = "Network error. Please check your connection and try again.";
-        formErrorContainer.style.display = "block";
-      } finally {
-        submitBtn.classList.remove("btn-loading");
-        btnText.style.visibility = "visible";
-      }
-    });
-  }
-});
-</script>
+      });
+    </script>
   </body>
 </html>
