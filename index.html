@@ -147,6 +147,7 @@
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
+        height: 100%; /* Fix for black space below footer */
       }
       body {
         font-family: "Inter", sans-serif;
@@ -157,7 +158,7 @@
         padding: 0;
         display: flex;
         flex-direction: column;
-        min-height: 100vh;
+        min-height: 100vh; /* Fix for black space below footer */
       }
 
       /* Performance Optimizations */
@@ -250,7 +251,7 @@
       .content {
         margin-left: 0;
         transition: margin 0.3s ease;
-        flex: 1;
+        flex: 1; /* Fix for black space below footer */
       }
 
       .sidebar-header {
@@ -292,27 +293,14 @@
         font-size: 1.2rem;
       }
 
-      .nav-link:hover {
-        color: var(--primary);
-        padding-right: 15px;
-      }
-
-      .nav-link:hover::after {
-        content: "<";
-        position: absolute;
-        right: 0;
-        color: var(--primary);
-        animation: navLinkFadeIn 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-      }
-
-      @keyframes navLinkFadeIn {
-        from {
-          opacity: 0;
-          transform: translateX(8px);
+      /* Updated hover effect for desktop navigation */
+      @media (min-width: 1025px) {
+        .nav-link:hover {
+          color: #f0f0f0; /* Off-white color */
+          font-weight: 500; /* Semi-bold */
         }
-        to {
-          opacity: 1;
-          transform: translateX(0);
+        .nav-link:hover::after {
+          content: none; /* Remove the < character */
         }
       }
 
@@ -964,7 +952,7 @@
         <article class="project-card">
           <div class="flex flex-col md:flex-row">
             <div class="md:w-1/2">
-              <img src="assets/company.png" alt="Company Website Screenshot" class="w-full h-auto object-contain max-h-80 mx-auto p-4">
+              <img src="assets/company.png" alt="Company Website Screenshot" class="w-full h-auto object-contain max-h-80 mx-auto p-4" loading="lazy" decoding="async">
             </div>
             <div class="md:w-1/2 p-8">
               <span class="text-[#00f7ff] font-semibold">Frontend Development</span>
@@ -987,7 +975,7 @@
         <article class="project-card">
           <div class="flex flex-col md:flex-row-reverse">
             <div class="md:w-1/2">
-              <img src="assets/portfolio.png" alt="Portfolio Showcase Screenshot" class="w-full h-auto object-contain max-h-80 mx-auto p-4">
+              <img src="assets/portfolio.png" alt="Portfolio Showcase Screenshot" class="w-full h-auto object-contain max-h-80 mx-auto p-4" loading="lazy" decoding="async">
             </div>
             <div class="md:w-1/2 p-8">
               <span class="text-[#00f7ff] font-semibold">Frontend Development</span>
@@ -1011,7 +999,7 @@
         <article class="project-card">
           <div class="flex flex-col md:flex-row">
             <div class="md:w-1/2">
-              <img src="assets/fast-food.png" alt="Fast Food Ordering Screenshot" class="w-full h-auto object-contain max-h-80 mx-auto p-4">
+              <img src="assets/fast-food.png" alt="Fast Food Ordering Screenshot" class="w-full h-auto object-contain max-h-80 mx-auto p-4" loading="lazy" decoding="async">
             </div>
             <div class="md:w-1/2 p-8">
               <span class="text-[#00f7ff] font-semibold">Frontend Development</span>
@@ -1034,7 +1022,7 @@
         <article class="project-card">
           <div class="flex flex-col md:flex-row-reverse">
             <div class="md:w-1/2">
-              <img src="assets/gym.png" alt="Gym Page Screenshot" class="w-full h-auto object-contain max-h-80 mx-auto p-4">
+              <img src="assets/gym.png" alt="Gym Page Screenshot" class="w-full h-auto object-contain max-h-80 mx-auto p-4" loading="lazy" decoding="async">
             </div>
             <div class="md:w-1/2 p-8">
               <span class="text-[#00f7ff] font-semibold">Frontend Development</span>
@@ -1057,7 +1045,7 @@
         <article class="project-card">
           <div class="flex flex-col md:flex-row">
             <div class="md:w-1/2">
-              <img src="assets/react.png" alt="React Project Screenshot" class="w-full h-auto object-contain max-h-80 mx-auto p-4">
+              <img src="assets/react.png" alt="React Project Screenshot" class="w-full h-auto object-contain max-h-80 mx-auto p-4" loading="lazy" decoding="async">
             </div>
             <div class="md:w-1/2 p-8">
               <span class="text-[#00f7ff] font-semibold">Full Stack Development</span>
@@ -1103,6 +1091,8 @@
                   src="assets/me.jpg"
                   alt="Hashir Marwat"
                   class="w-full h-80 rounded-xl object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div
@@ -1404,43 +1394,71 @@
 <script>
 // Performance Optimized Scripts
 document.addEventListener("DOMContentLoaded", function () {
-  // ===== Video Optimization =====
-  function optimizeVideos() {
-    const videos = document.querySelectorAll('.video-background');
+  // ===== Video Handling for Different Devices =====
+  function handleVideoBackgrounds() {
+    const introVideo = document.querySelector('#intro .video-background');
+    const aboutVideo = document.querySelector('#about .video-background');
     
-    videos.forEach(video => {
-      // Ensure videos are properly muted for autoplay
-      video.muted = true;
+    if (window.innerWidth <= 768) { // Mobile devices
+      // Change intro video
+      introVideo.innerHTML = `
+        <source src="assets/d.mp4" type="video/mp4">
+        <source src="assets/d.webm" type="video/webm">
+        Your browser does not support the video tag.
+      `;
       
-      // Force play on iOS
-      const playPromise = video.play();
+      // Change about video
+      aboutVideo.innerHTML = `
+        <source src="assets/h.mp4" type="video/mp4">
+        <source src="assets/h.webm" type="video/webm">
+        Your browser does not support the video tag.
+      `;
       
-      if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          // Auto-play was prevented, show poster instead
-          video.load();
-        });
-      }
+      // Reload videos
+      introVideo.load();
+      aboutVideo.load();
+    } else { // Desktop
+      // Set back to desktop versions
+      introVideo.innerHTML = `
+        <source src="assets/d.mp4" type="video/mp4">
+        <source src="assets/d.webm" type="video/webm">
+        Your browser does not support the video tag.
+      `;
       
-      // Preload videos
-      video.setAttribute('preload', 'auto');
+      aboutVideo.innerHTML = `
+        <source src="assets/h.mp4" type="video/mp4">
+        <source src="assets/h.webm" type="video/webm">
+        Your browser does not support the video tag.
+      `;
       
-      // iOS specific fixes
-      video.setAttribute('playsinline', '');
-      video.setAttribute('webkit-playsinline', '');
-      video.setAttribute('x-webkit-airplay', 'allow');
+      // Reload videos
+      introVideo.load();
+      aboutVideo.load();
+    }
+  }
+
+  // Preload videos for better performance
+  function preloadVideos() {
+    const videoUrls = [
+      'assets/d.mp4',
+      'assets/d.webm',
+      'assets/h.mp4',
+      'assets/h.webm'
+    ];
+    
+    videoUrls.forEach(url => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'video';
+      link.href = url;
+      document.head.appendChild(link);
     });
   }
 
-  // Initialize video optimization
-  optimizeVideos();
-  
-  // Re-optimize videos when page becomes visible again
-  document.addEventListener('visibilitychange', function() {
-    if (!document.hidden) {
-      optimizeVideos();
-    }
-  });
+  // Run on load and when window resizes
+  preloadVideos();
+  handleVideoBackgrounds();
+  window.addEventListener('resize', handleVideoBackgrounds);
 
   // ===== Mobile Menu =====
   const mobileMenuBtn = document.getElementById("mobileMenuBtn");
